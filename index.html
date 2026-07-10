@@ -569,6 +569,28 @@
             <li><a href="#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap"></i> Education</a></li>
         </ul>
     </nav>
+    <!-- Reusable Project Modal -->
+<div id="projectModal" class="project-modal-overlay" onclick="closeProjectModalOnOutsideClick(event)">
+    <div class="project-modal-content">
+        <span class="project-modal-close" onclick="closeProjectModal()">&times;</span>
+        <h3 id="modalTitle" class="modal-project-title">Project Name</h3>
+        <p id="modalDesc" class="modal-project-desc">Description text goes here.</p>
+        
+        <div class="modal-tech-box">
+            <strong>Tech Stack:</strong>
+            <p id="modalTech" class="modal-project-tech">Technologies used...</p>
+        </div>
+
+        <div class="modal-links-container">
+            <a id="modalAppStore" href="#" target="_blank" class="modal-btn btn-appstore">
+                <i class="fab fa-apple"></i> App Store
+            </a>
+            <a id="modalPlayStore" href="#" target="_blank" class="modal-btn btn-playstore">
+                <i class="fab fa-google-play"></i> Play Store
+            </a>
+        </div>
+    </div>
+</div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -768,99 +790,108 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Key Projects</h2>
-                <p>Diverse portfolio spanning healthcare, finance, education, and enterprise solutions</p>
-            </div>
-            <div class="section-card">
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-quran"></i>
-                        </div>
-                        <h3 class="project-title">Religion-Based Community App</h3>
-                        <p class="project-desc">Community platform for managing events, activities, and religious content</p>
-                        <div class="project-tech">Swift UI • iOS</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="project-title">Phishing Prevention Tool</h3>
-                        <p class="project-desc">Security application that detects lookalike domain names to prevent phishing attacks</p>
-                        <div class="project-tech">React Native</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="project-title">E-Learning Platform</h3>
-                        <p class="project-desc">Comprehensive learning platform offering tech and non-tech courses, bootcamps with quizzes and assessments</p>
-                        <div class="project-tech">Flutter • Swift UI • Android Studio</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <h3 class="project-title">Enterprise Resource Booking System</h3>
-                        <p class="project-desc">Facility management platform for booking resources across multiple regions and timezones</p>
-                        <div class="project-tech">React Native • Timezone Management</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-stethoscope"></i>
-                        </div>
-                        <h3 class="project-title">Medical Exam Prep Platform</h3>
-                        <p class="project-desc">Regional health assessment platform with customizable exams and simulation testing</p>
-                        <div class="project-tech">React Native • Assessment Engine</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3 class="project-title">Enterprise Communication Platform</h3>
-                        <p class="project-desc">Real-time team collaboration platform enabling messaging and video conferencing</p>
-                        <div class="project-tech">Swift • Networking</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-charging-station"></i>
-                        </div>
-                        <h3 class="project-title">Smart EV Charging Network</h3>
-                        <p class="project-desc">IoT-enabled charging platform with Bluetooth connectivity for charger control and billing management</p>
-                        <div class="project-tech">React Native • Bluetooth • IoT</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <h3 class="project-title">AI Photo Editing Suite</h3>
-                        <p class="project-desc">Advanced image editing application with AI-powered filters, retouching, and real-time processing</p>
-                        <div class="project-tech">Swift UI • AI APIs • Local Processing</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="project-title">Freelance Marketplace Platform</h3>
-                        <p class="project-desc">Project management marketplace connecting clients with contractors for service delivery</p>
-                        <div class="project-tech">React Native • Backend APIs</div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <h3 class="project-title">AI-Powered Assessment Kiosk</h3>
-                        <p class="project-desc">Intelligent kiosk system with AI-driven question routing and adaptive assessment logic</p>
-                        <div class="project-tech">Swift • AI Routing</div>
-                    </div>
+  <!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Key Projects</h2>
+            <p>Diverse portfolio spanning healthcare, finance, education, and enterprise solutions</p>
+        </div>
+        <div class="section-card">
+            <div class="projects-grid">
+                
+                <!-- 1. 10Pearls University -->
+                <div class="project-card" onclick="openProjectModal('10Pearls University', 'Enterprise mobile learning platform offering tech and non-tech courses, bootcamps with quizzes and assessments.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/10pearls-university/id6447512915', 'https://play.google.com/store/apps/details?id=com.tenpearls.university')">
+                    <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="project-title">10Pearls University</h3>
+                    <p class="project-desc">Comprehensive learning platform offering tech and non-tech courses, bootcamps with quizzes and assessments</p>
+                    <div class="project-tech">React Native • TypeScript</div>
                 </div>
+
+                <!-- 2. Pando Electric Gen 2.0 -->
+                <div class="project-card" onclick="openProjectModal('Pando Electric Gen 2.0', 'IoT-enabled tracking platform with real-time energy telemetry analytics and power control management.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/pando-electric/id6741189483', 'https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2')">
+                    <div class="project-icon"><i class="fas fa-charging-station"></i></div>
+                    <h3 class="project-title">Pando Electric Gen 2.0</h3>
+                    <p class="project-desc">IoT-enabled charging platform with Bluetooth connectivity for charger control and billing management</p>
+                    <div class="project-tech">React Native • Bluetooth • IoT</div>
+                </div>
+
+                <!-- 3. Healthacademia -->
+                <div class="project-card" onclick="openProjectModal('Healthacademia', 'Regional digital health application containing custom exam platforms and structured preparation suites.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git', 'https://apps.apple.com/pk/app/healthcademia-app/id6608980560', 'https://play.google.com/store/apps/details?id=com.healthcademia.amirapp')">
+                    <div class="project-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3 class="project-title">Healthacademia</h3>
+                    <p class="project-desc">Regional health assessment platform with customizable exams and simulation testing</p>
+                    <div class="project-tech">React Native • Medical Prep</div>
+                </div>
+
+                <!-- 4. Jeenie -->
+                <div class="project-card" onclick="openProjectModal('Jeenie', 'Real-time 24/7 team translation and collaboration platform enabling messaging and video conferencing.', 'Flutter, Dart, Firebase, MVVM, REST APIs, Push Notifications, Riverpod, Bloc, Provider, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432', 'https://play.google.com/store/apps/details?id=com.newsolo')">
+                    <div class="project-icon"><i class="fas fa-comments"></i></div>
+                    <h3 class="project-title">Jeenie</h3>
+                    <p class="project-desc">Real-time team collaboration platform enabling 24/7 live interpreting, messaging, and video streaming</p>
+                    <div class="project-tech">Flutter • Real-Time Streams</div>
+                </div>
+
+                <!-- 5. Semieta Site Access -->
+                <div class="project-card" onclick="openProjectModal('Semieta Site Access', 'Highly secure corporate site management application controlling regional resource assets and authorization tokens.', 'Swift, SwiftUI, MVC, Firebase, MVVM, REST APIs, Push Notifications, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/semieta-site-access/id6760181040', '')">
+                    <div class="project-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3 class="project-title">Semieta Site Access</h3>
+                    <p class="project-desc">Facility management platform for booking resources, access levels, and auditing corporate timezones</p>
+                    <div class="project-tech">SwiftUI • Swift • Secure iOS</div>
+                </div>
+
+                <!-- 6. AIMS+ -->
+                <div class="project-card" onclick="openProjectModal('AIMS+', 'Optimized medical testing engine serving customizable evaluations with unified state monitoring rules.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git', 'https://apps.apple.com/pk/app/aims/id6746238532', 'https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp')">
+                    <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="project-title">AIMS+</h3>
+                    <p class="project-desc">Advanced educational assessment suite with synchronized push routines and runtime localized diagnostics</p>
+                    <div class="project-tech">React Native • Assessment Engine</div>
+                </div>
+
+                <!-- 7. Religion-Based Community App -->
+                <div class="project-card" onclick="openProjectModal('Religion-Based Community App', 'Community platform for managing events, activities, and religious content.', 'Swift, SwiftUI, iOS SDK, CoreData', '', '')">
+                    <div class="project-icon"><i class="fas fa-quran"></i></div>
+                    <h3 class="project-title">Religion-Based Community App</h3>
+                    <p class="project-desc">Community platform for managing events, activities, and religious content</p>
+                    <div class="project-tech">Swift UI • iOS</div>
+                </div>
+
+                <!-- 8. Phishing Prevention Tool -->
+                <div class="project-card" onclick="openProjectModal('Phishing Prevention Tool', 'Security application that detects lookalike domain names to prevent phishing attacks.', 'React Native, JavaScript, Native Security Layers', '', '')">
+                    <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="project-title">Phishing Prevention Tool</h3>
+                    <p class="project-desc">Security application that detects lookalike domain names to prevent phishing attacks</p>
+                    <div class="project-tech">React Native</div>
+                </div>
+
+                <!-- 9. AI Photo Editing Suite -->
+                <div class="project-card" onclick="openProjectModal('AI Photo Editing Suite', 'Advanced image editing application with AI-powered filters, retouching, and real-time processing.', 'SwiftUI, CoreImage, AI Engine APIs, Swift Concurrency', '', '')">
+                    <div class="project-icon"><i class="fas fa-image"></i></div>
+                    <h3 class="project-title">AI Photo Editing Suite</h3>
+                    <p class="project-desc">Advanced image editing application with AI-powered filters, retouching, and real-time processing</p>
+                    <div class="project-tech">Swift UI • AI APIs</div>
+                </div>
+
+                <!-- 10. AI-Powered Assessment Kiosk -->
+                <div class="project-card" onclick="openProjectModal('AI-Powered Assessment Kiosk', 'Intelligent kiosk system with AI-driven question routing and adaptive assessment logic.', 'Swift, UIKit, Combine Framework, Local AI Processing', '', '')">
+                    <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h3 class="project-title">AI-Powered Assessment Kiosk</h3>
+                    <p class="project-desc">Intelligent kiosk system with AI-driven question routing and adaptive assessment logic</p>
+                    <div class="project-tech">Swift • AI Routing</div>
+                </div>
+
+                <!-- 11. Freelance Marketplace Platform -->
+                <div class="project-card" onclick="openProjectModal('Freelance Marketplace Platform', 'Project management marketplace connecting clients with contractors for service delivery.', 'React Native, TypeScript, Redux, REST Client Context', '', '')">
+                    <div class="project-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="project-title">Freelance Marketplace Platform</h3>
+                    <p class="project-desc">Project management marketplace connecting clients with contractors for service delivery</p>
+                    <div class="project-tech">React Native • Backend APIs</div>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Education Section -->
     <section id="education" class="section">
