@@ -1,1087 +1,1785 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Ammar - Senior Mobile Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0a2540;
-            --secondary: #1e3a5f;
-            --accent: #3b82f6;
-            --accent-dark: #1d4ed8;
-            --text-primary: #111827;
-            --text-secondary: #6b7280;
-            --bg-primary: #f8fafc;
-            --white: #ffffff;
-            --border: #e2e8f0;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, var(--bg-primary) 0%, #f1f5f9 100%);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Fixed Navigation */
-        .navbar {
-            position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--white);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 12px 28px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border);
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-link {
-            padding: 10px 20px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            border-radius: 12px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            letter-spacing: 0.025em;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--white);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 100px;
-            padding-bottom: 120px;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--text-primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .hero-text .title {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 32px;
-            letter-spacing: 0.025em;
-        }
-
-        .hero-text p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary, .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            letter-spacing: 0.025em;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--text-primary);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-primary);
-            transform: translateY(-2px);
-        }
-
-        .profile-section {
-            text-align: center;
-        }
-
-        .profile-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-            box-shadow: var(--shadow-lg);
-            background: #000;
-            margin-bottom: 24px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-info {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .profile-info .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .profile-info .contact-item i {
-            width: 20px;
-            color: var(--accent);
-        }
-
-        /* Sections */
-        .section {
-            padding: 120px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-header h2 {
-            font-size: 2.75rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            letter-spacing: -0.025em;
-        }
-
-        .section-header p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .section-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 48px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .section-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .skill-category {
-            text-align: center;
-            padding: 40px 24px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--bg-primary) 100%);
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-category h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .skill-category h3 i {
-            color: var(--accent);
-            width: 24px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent), var(--accent-dark));
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 72px;
-            position: relative;
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-            transform: translateX(60px);
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .timeline-content {
-            width: 48%;
-            padding: 32px;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: auto;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 32px;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: auto;
-            right: 50%;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .company {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .role {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .dates {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .job-desc li {
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        .job-desc li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        /* Projects Layout */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 32px;
-        }
-
-        .project-card {
-            padding: 40px;
-            border-radius: 20px;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(40px);
-            cursor: pointer;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        .project-desc {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        /* Project Modal Overrides & System Styling */
-        .project-modal-overlay {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 37, 64, 0.6);
-            backdrop-filter: blur(6px);
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .project-modal-content {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 24px;
-            max-width: 580px;
-            width: 90%;
-            position: relative;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border);
-            animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .project-modal-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-        .project-modal-close:hover { color: var(--text-primary); }
-
-        .modal-project-title { font-size: 1.75rem; margin-bottom: 16px; color: var(--text-primary); font-weight: 800; }
-        .modal-project-desc { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 24px; }
-        .modal-tech-box { background-color: var(--bg-primary); padding: 16px; border-left: 4px solid var(--accent); border-radius: 8px; margin-bottom: 28px; border: 1px solid var(--border); border-left-width: 4px; }
-        .modal-tech-box strong { font-size: 0.8rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.05em; display: block; margin-bottom: 6px;}
-        .modal-project-tech { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
-
-        .modal-links-container { display: flex; gap: 16px; flex-wrap: wrap; }
-        .modal-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none !important;
-            transition: all 0.2s ease;
-        }
-        .modal-btn:active { transform: scale(0.98); }
-        .btn-appstore { background-color: #111827; color: #fff; box-shadow: var(--shadow); }
-        .btn-appstore:hover { background-color: #000; transform: translateY(-2px); }
-        .btn-playstore { background-color: #22c55e; color: #fff; box-shadow: var(--shadow); }
-        .btn-playstore:hover { background-color: #16a34a; transform: translateY(-2px); }
-
-        /* Education */
-        .education-card {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 48px;
-            background: var(--white);
-            border-radius: 24px;
-            border-left: 6px solid var(--accent);
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .education-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .education-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .education-info p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .education-dates {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-                text-align: center;
-            }
-            
-            .profile-section {
-                order: -1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 24px;
-            }
-            
-            .timeline-item, .timeline-item:nth-child(even) {
-                flex-direction: column !important;
-                transform: none !important;
-            }
-            
-            .timeline-content {
-                width: 100% !important;
-                margin: 0 !important;
-            }
-            
-            .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
-                left: 24px !important;
-            }
-            
-            .section-card, .project-card {
-                padding: 32px 24px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            body { background: white; }
-            .navbar { position: static; transform: none; }
-            .section-card, .timeline-content { 
-                box-shadow: none; 
-                border: 1px solid #ccc; 
-                background: white;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Ammar — Senior Mobile Developer</title>
+  <meta name="description" content="Portfolio of Muhammad Ammar, a senior mobile app developer shipping Flutter, React Native, and SwiftUI products for energy, healthcare, education, and enterprise.">
+  <meta name="author" content="Muhammad Ammar">
+  <meta name="theme-color" content="#14161c">
+  <meta property="og:title" content="Muhammad Ammar — Senior Mobile Developer">
+  <meta property="og:description" content="Eleven shipped mobile products. Flutter, React Native, and SwiftUI.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314161c'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia' font-size='22' fill='%23f7f4ee'%3EMA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Ammar",
+    "jobTitle": "Senior Mobile App Developer",
+    "email": "mailto:ammarmuhammad992@gmail.com",
+    "telephone": "+923226258404",
+    "address": { "@type": "PostalAddress", "addressLocality": "Lahore", "addressCountry": "PK" },
+    "sameAs": ["https://linkedin.com/in/mammar2826/"],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "National University of Sciences and Technology" },
+    "knowsAbout": ["Flutter", "React Native", "SwiftUI", "iOS", "Android"]
+  }
+  </script>
+  <style>
+    :root {
+      --ink: #16181d;
+      --muted: #5c6370;
+      --paper: #f3f0e8;
+      --card: #fffcf8;
+      --line: rgba(22, 24, 29, 0.1);
+      --accent: #8a3d22;
+      --accent-soft: #e4b79a;
+      --night: #14161c;
+      --night-text: #f7f4ee;
+      --shadow: 0 18px 40px rgba(22, 24, 29, 0.08);
+      --serif: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+      --sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      color-scheme: light;
+    }
+    img { max-width: 100%; display: block; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    ul, ol { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3, p { margin: 0; }
+    :focus-visible { outline: 2px solid #c46a3a; outline-offset: 3px; }
+    ::selection { background: #ead9cc; color: var(--ink); }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      z-index: 80;
+      background: white;
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .skip:focus { top: 12px; }
+
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      display: flex;
+      justify-content: center;
+      padding: 14px 0;
+      color: var(--night-text);
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+    .site-header.is-solid {
+      background: rgba(243, 240, 232, 0.92);
+      color: var(--ink);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--night-text);
+      color: var(--night);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .site-header.is-solid .brand-mark { background: var(--night); color: var(--night-text); }
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(247, 244, 238, 0.28);
+      background: transparent;
+      color: inherit;
+      place-items: center;
+    }
+    .site-header.is-solid .nav-toggle { border-color: var(--line); }
+    .nav-toggle .icon-close { display: none; }
+    .nav-toggle[aria-expanded="true"] .icon-menu { display: none; }
+    .nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+    .icon { width: 18px; height: 18px; display: block; }
+    #site-nav { display: flex; align-items: center; gap: 2px; }
+    #site-nav a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    #site-nav a:hover { background: rgba(255, 255, 255, 0.08); }
+    .site-header.is-solid #site-nav a:hover { background: rgba(22, 24, 29, 0.05); }
+    #site-nav a.is-active:not(.nav-resume) {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 1px;
+    }
+    .nav-resume {
+      margin-left: 8px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+    }
+    .site-header.is-solid .nav-resume {
+      background: var(--night);
+      color: var(--night-text);
+      border-color: var(--night);
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(900px 480px at 85% 10%, rgba(138, 61, 34, 0.28), transparent 60%),
+        radial-gradient(700px 420px at 0% 90%, rgba(36, 64, 58, 0.35), transparent 55%),
+        var(--night);
+      color: var(--night-text);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.78fr);
+      gap: 56px;
+      align-items: end;
+      padding: 138px 0 80px;
+    }
+    .hero .eyebrow { color: var(--accent-soft); }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(3.3rem, 8vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+    }
+    .lede {
+      margin-top: 24px;
+      max-width: 46ch;
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: rgba(247, 244, 238, 0.78);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn-light, .btn-ghost, .btn-solid, .store-link, .btn-details {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .btn-light, .btn-ghost { padding: 14px 18px; font-size: 0.95rem; }
+    .btn-light { background: var(--night-text); color: var(--night); }
+    .btn-light:hover { background: white; }
+    .btn-ghost { color: var(--night-text); border: 1px solid rgba(247, 244, 238, 0.35); background: transparent; }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.06); }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 28px;
+      color: rgba(247, 244, 238, 0.72);
+      font-size: 0.95rem;
+    }
+    .hero-meta a { text-decoration: none; }
+    .hero-meta a:hover { color: white; }
+
+    .portrait-frame {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #1c1e24;
+    }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      transform: scale(1.45);
+      transform-origin: center 18%;
+    }
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 38%;
+      background: linear-gradient(transparent, rgba(10, 12, 16, 0.55));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .portrait-badge {
+      position: absolute;
+      z-index: 2;
+      left: 16px;
+      bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(20, 22, 28, 0.72);
+      color: white;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+    }
+
+    /* Proof */
+    .proof-wrap { padding: 36px 0 8px; }
+    .proof-note {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .proof a {
+      display: block;
+      height: 100%;
+      padding: 22px 20px 20px;
+      background: var(--paper);
+      text-decoration: none;
+    }
+    .proof a:hover { background: var(--card); }
+    .proof strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.45rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .proof span { display: block; margin-top: 8px; color: #3c424c; }
+    .proof em {
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Sections */
+    .section { padding: 88px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+    .section-lede { color: var(--muted); font-size: 1.05rem; }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      font-size: 0.9rem;
+    }
+    .filter[aria-pressed="true"] {
+      background: var(--night);
+      color: var(--night-text);
+      border-color: var(--night);
+    }
+    .result-count { color: var(--muted); font-size: 0.9rem; margin: 0; }
+    .empty {
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+    }
+
+    /* Projects */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .work-grid:not(.is-featured) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    @media (min-width: 721px) {
+      .work-grid.is-single .work:not([hidden]) { flex-direction: row; }
+      .work-grid.is-single .work:not([hidden]) .cover { flex: 0 0 340px; min-height: 380px; }
+      .work-grid.is-single .work:not([hidden]) .phone { width: 180px; height: 340px; }
+      .work-grid.is-single .work:not([hidden]) .screen { font-size: 12px; }
+      .work-grid.is-single .work:not([hidden]) .work-body { justify-content: center; }
+      .work-grid.is-single .work:not([hidden]) .work-actions { margin-top: 8px; }
+    }
+    .work-grid.is-featured { grid-template-columns: repeat(6, 1fr); }
+    .work-grid.is-featured .work { grid-column: span 2; }
+    .work-grid.is-featured .work:nth-child(1) {
+      grid-column: span 6;
+      flex-direction: row;
+    }
+    .work-grid.is-featured .work:nth-child(2),
+    .work-grid.is-featured .work:nth-child(3) { grid-column: span 3; }
+
+    .work {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border: 1px solid rgba(22, 24, 29, 0.08);
+      border-radius: 22px;
+      overflow: hidden;
+      min-width: 0;
+      scroll-margin-top: 96px;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .work[hidden] { display: none !important; }
+    @media (hover: hover) {
+      .work:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+        border-color: rgba(22, 24, 29, 0.16);
+      }
+    }
+    .work:focus-within { border-color: rgba(138, 61, 34, 0.45); }
+
+    .cover {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 28px 16px;
+    }
+    .index {
+      position: absolute;
+      z-index: 2;
+      top: 14px;
+      left: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .work-grid.is-featured .work:nth-child(1) .cover {
+      flex: 0 0 340px;
+      min-height: 460px;
+    }
+    .work-grid.is-featured .work:nth-child(1) .work-body { justify-content: center; }
+    .work-grid.is-featured .work:nth-child(1) .work-actions { margin-top: 8px; }
+    .work-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px 20px 18px;
+      flex: 1;
+    }
+    .work h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .work-grid.is-featured .work:nth-child(1) h3 {
+      font-size: clamp(2rem, 3vw, 2.7rem);
+    }
+    .work .blurb {
+      color: var(--muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .work-grid.is-featured .work:nth-child(1) .blurb { -webkit-line-clamp: 4; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 16px 22px; }
+    .metrics strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .metrics span { color: var(--muted); font-size: 0.8rem; }
+    .tech { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech li, .tags li {
+      font-size: 0.78rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--paper);
+      color: #3a404a;
+    }
+    .work-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+    .btn-details, .btn-solid {
+      border: 0;
+      background: var(--night);
+      color: var(--night-text);
+      padding: 10px 14px;
+      font-size: 0.875rem;
+    }
+    .btn-details:hover, .btn-solid:hover { background: #2a2e38; }
+    .store-link {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    .store-link:hover { border-color: rgba(22, 24, 29, 0.28); background: var(--paper); }
+    .note-pill {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 8px 2px;
+    }
+
+    /* Phones */
+    .phone {
+      width: 150px;
+      height: 280px;
+      border-radius: 26px;
+      padding: 8px;
+      background: #0c0d10;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 24px 40px rgba(0, 0, 0, 0.28);
+      position: relative;
+      flex: none;
+    }
+    .work-grid.is-featured .work:nth-child(1) .phone {
+      width: 200px;
+      height: 400px;
+      margin-bottom: 0;
+    }
+    .notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 54px;
+      height: 10px;
+      border-radius: 8px;
+      background: #0c0d10;
+      z-index: 2;
+    }
+    .screen {
+      height: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 22px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: white;
+      font-size: 10px;
+      line-height: 1.25;
+    }
+    .work-grid.is-featured .work:nth-child(1) .screen { font-size: 12px; padding-top: 28px; }
+    .s-top, .s-row { display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+    .s-top { opacity: 0.72; }
+    .s-kicker { letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.78em; opacity: 0.62; }
+    .s-title { font-size: 1.45em; font-weight: 600; letter-spacing: -0.03em; }
+    .s-sub { opacity: 0.7; }
+    .s-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 7px 8px;
+    }
+    .s-bar { height: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+    .s-bar > span { display: block; height: 100%; border-radius: inherit; background: var(--hi); }
+    .hi { color: var(--hi); }
+    .opt.on { box-shadow: inset 0 0 0 1px var(--hi); }
+    .ring {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      margin: 2px auto;
+      background: conic-gradient(var(--hi) 0 72%, rgba(255, 255, 255, 0.14) 0);
+      display: grid;
+      place-items: center;
+    }
+    .ring div {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring b { font-size: 1.35em; }
+    .avatars { display: flex; }
+    .avatars span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--hi) 60%, #111);
+      border: 2px solid var(--bg);
+      margin-right: -6px;
+    }
+    .bubble {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px 10px 10px 3px;
+      padding: 6px 8px;
+      max-width: 92%;
+    }
+    .bubble.me {
+      align-self: flex-end;
+      background: color-mix(in srgb, var(--hi) 28%, transparent);
+      border-radius: 10px 10px 3px 10px;
+    }
+    .photo-stage {
+      flex: 1;
+      min-height: 64px;
+      border-radius: 12px;
+      background:
+        linear-gradient(160deg, color-mix(in srgb, var(--hi) 75%, white), transparent 62%),
+        #3a2434;
+    }
+    .chips { display: flex; gap: 4px; flex-wrap: wrap; }
+    .chips span { padding: 3px 6px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); }
+    .chips span.on { background: var(--hi); color: #1a1020; }
+    .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+    .cal i { display: block; aspect-ratio: 1; border-radius: 2px; background: rgba(255, 255, 255, 0.12); }
+    .cal i.on { background: var(--hi); }
+
+    .c-pando { background: radial-gradient(120% 90% at 50% 100%, #1c4a3c, #0c1c18 60%); }
+    .c-health { background: radial-gradient(120% 90% at 50% 100%, #1a4a52, #0e1c20 60%); }
+    .c-semieta { background: radial-gradient(120% 90% at 50% 100%, #5a3a28, #1a1410 60%); }
+    .c-uni { background: radial-gradient(120% 90% at 50% 100%, #1d3f72, #0e1828 60%); }
+    .c-jeenie { background: radial-gradient(120% 90% at 50% 100%, #4a2d78, #160e24 60%); }
+    .c-free { background: radial-gradient(120% 90% at 50% 100%, #3d3428, #161410 60%); }
+    .c-aims { background: radial-gradient(120% 90% at 50% 100%, #34306a, #141226 60%); }
+    .c-photo { background: radial-gradient(120% 90% at 50% 100%, #6a3058, #1a1018 60%); }
+    .c-kiosk { background: radial-gradient(120% 90% at 50% 100%, #1e4a38, #101612 60%); }
+    .c-phish { background: radial-gradient(120% 90% at 50% 100%, #243848, #101418 60%); }
+    .c-community { background: radial-gradient(120% 90% at 50% 100%, #6a4a2a, #1a140e 60%); }
+
+    .s-pando { --hi: #9ddec0; --bg: #10241e; background: var(--bg); }
+    .s-health { --hi: #9ee0e0; --bg: #102428; background: var(--bg); }
+    .s-semieta { --hi: #f0c9a0; --bg: #241910; background: var(--bg); }
+    .s-uni { --hi: #9dc2ff; --bg: #12243c; background: var(--bg); }
+    .s-jeenie { --hi: #d4c2ff; --bg: #1c1230; background: var(--bg); }
+    .s-free { --hi: #f0e2c8; --bg: #1c1914; background: var(--bg); }
+    .s-aims { --hi: #c8c2ff; --bg: #1a1830; background: var(--bg); }
+    .s-photo { --hi: #ffc2e0; --bg: #241422; background: var(--bg); }
+    .s-kiosk { --hi: #b7ebc8; --bg: #121c16; background: var(--bg); }
+    .s-phish { --hi: #ffb4a8; --bg: #12181e; background: var(--bg); }
+    .s-community { --hi: #ffd7a8; --bg: #261c14; background: var(--bg); }
+
+    /* Dialog */
+    #caseDialog {
+      width: min(980px, calc(100vw - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      border: 0;
+      border-radius: 28px;
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+      overflow: auto;
+    }
+    #caseDialog::backdrop {
+      background: rgba(16, 18, 22, 0.64);
+      backdrop-filter: blur(8px);
+    }
+    .dialog-shell { position: relative; }
+    .dialog-close {
+      position: sticky;
+      top: 14px;
+      float: right;
+      margin: 14px 14px -54px 0;
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 252, 248, 0.94);
+      display: grid;
+      place-items: center;
+    }
+    .case-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 480px; }
+    .cover.in-dialog {
+      height: auto;
+      min-height: 100%;
+      align-items: center;
+    }
+    .cover.in-dialog .phone { width: 200px; height: 400px; margin: 0; }
+    .cover.in-dialog .screen { font-size: 12px; padding-top: 28px; }
+    .case-copy { padding: 36px 56px 36px 28px; }
+    .case-copy h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .case-lead { margin-top: 14px; color: #3c424c; font-size: 1.05rem; }
+    .case-points { margin-top: 18px; }
+    .case-points li, .role-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-top: 10px;
+      color: #2c323c;
+      line-height: 1.6;
+    }
+    .case-points li::before, .role-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+    }
+    .stack-label {
+      margin: 22px 0 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .case-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .case-note { margin-top: 18px; color: var(--muted); }
+
+    /* Experience, skills, education */
+    .role {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 28px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+    }
+    .roles { border-bottom: 1px solid var(--line); }
+    .role-aside { color: var(--muted); font-size: 0.92rem; padding-top: 4px; }
+    .role-aside strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+    .role h3 { font-size: 1.35rem; letter-spacing: -0.02em; font-weight: 600; }
+    .role-company { color: var(--accent); font-weight: 600; margin-top: 4px; }
+    .role-list { max-width: 68ch; margin-top: 8px; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .principles article {
+      background: var(--card);
+      border: 1px solid rgba(22, 24, 29, 0.08);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .principles h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .principles p, .edu-copy p { color: var(--muted); }
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .skill-groups h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags li {
+      font-size: 0.9rem;
+      padding: 7px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    .edu {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      padding-top: 8px;
+    }
+    .edu h3 { font-size: 1.5rem; letter-spacing: -0.02em; font-weight: 600; margin-bottom: 6px; }
+    .edu-dates {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      background: var(--night);
+      color: var(--night-text);
+      padding: 96px 0 32px;
+    }
+    .site-footer .eyebrow { color: var(--accent-soft); }
+    .footer-email {
+      display: inline-block;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .footer-email:hover { color: var(--accent-soft); }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 28px;
+    }
+    .footer-links a { text-underline-offset: 3px; }
+    .footer-links a:hover { color: var(--accent-soft); }
+    .copyright { margin-top: 64px; color: rgba(247, 244, 238, 0.5); font-size: 0.85rem; }
+
+    @media (max-width: 1040px) {
+      .nav-toggle { display: grid; }
+      #site-nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        background: var(--card);
+        color: var(--ink);
+        border-radius: 16px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      }
+      #site-nav.is-open { display: flex; }
+      #site-nav a { padding: 12px 14px; }
+      #site-nav a:hover { background: var(--paper); }
+      .nav-resume {
+        margin: 6px 0 0;
+        text-align: center;
+        background: var(--night);
+        color: var(--night-text);
+        border-color: var(--night);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .section-head, .principles, .skill-groups { grid-template-columns: 1fr; }
+      .proof { grid-template-columns: 1fr 1fr; }
+      .work-grid,
+      .work-grid.is-featured,
+      .work-grid:not(.is-featured) { grid-template-columns: 1fr 1fr; }
+      .work-grid.is-featured .work,
+      .work-grid.is-featured .work:nth-child(2),
+      .work-grid.is-featured .work:nth-child(3) {
+        grid-column: auto;
+        flex-direction: column;
+      }
+      .work-grid.is-featured .work:nth-child(1) { grid-column: 1 / -1; }
+      .portrait-frame { max-width: 420px; }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: min(1120px, calc(100% - 32px)); }
+      .hero-grid { padding-top: 112px; }
+      .work-grid,
+      .work-grid.is-featured,
+      .work-grid:not(.is-featured),
+      .proof { grid-template-columns: 1fr; }
+      .work-grid.is-featured .work:nth-child(1) { flex-direction: column; }
+      .work-grid.is-featured .work:nth-child(1) .cover {
+        flex-basis: auto;
+        min-height: 320px;
+      }
+      .work-grid.is-featured .work:nth-child(1) .phone {
+        width: 160px;
+        height: 300px;
+      }
+      .role, .edu, .case-layout { grid-template-columns: 1fr; }
+      .edu { align-items: start; }
+      .case-copy { padding: 22px 20px 28px; }
+      .cover.in-dialog { min-height: 280px; }
+      .cover.in-dialog .phone { width: 150px; height: 280px; }
+      .brand-name { display: none; }
+      .section { padding: 72px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .portrait-frame img { transform: none; }
+    }
+
+    @media print {
+      .site-header, .nav-toggle, .filters, .hero-actions, #caseDialog { display: none !important; }
+      .hero, .site-footer { background: white; color: black; }
+      .work { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active" data-section="hero"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#skills" class="nav-link" data-section="skills"><i class="fas fa-code"></i> Skills</a></li>
-            <li><a href="#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-            <li><a href="#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-            <li><a href="#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-        </ul>
-    </nav>
+  <a class="skip" href="#work">Skip to projects</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">MA</span>
+        <span class="brand-name">Muhammad Ammar</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <svg class="icon icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-resume" href="Muhammad_Ammar_Resume.pdf" download>Resume</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Reusable Project Modal -->
-    <div id="projectModal" class="project-modal-overlay" onclick="closeProjectModalOnOutsideClick(event)">
-        <div class="project-modal-content">
-            <span class="project-modal-close" onclick="closeProjectModal()">&times;</span>
-            <h3 id="modalTitle" class="modal-project-title">Project Name</h3>
-            <p id="modalDesc" class="modal-project-desc">Description text goes here.</p>
-            
-            <div class="modal-tech-box">
-                <strong>Tech Stack:</strong>
-                <p id="modalTech" class="modal-project-tech">Technologies used...</p>
-            </div>
-
-            <div class="modal-links-container">
-                <a id="modalAppStore" href="#" target="_blank" class="modal-btn btn-appstore">
-                    <i class="fab fa-apple"></i> App Store
-                </a>
-                <a id="modalPlayStore" href="#" target="_blank" class="modal-btn btn-playstore">
-                    <i class="fab fa-google-play"></i> Play Store
-                </a>
-            </div>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Senior Mobile App Developer</p>
+          <h1>Muhammad<br>Ammar</h1>
+          <p class="lede">4+ years building cross-platform apps with Flutter, React Native, and SwiftUI. I work on architecture, API integration, and performance through to the store release.</p>
+          <div class="hero-actions">
+            <a class="btn-light" href="#work">View projects</a>
+            <a class="btn-ghost" href="Muhammad_Ammar_Resume.pdf" download>Download resume</a>
+          </div>
+          <ul class="hero-meta">
+            <li><a href="mailto:ammarmuhammad992@gmail.com">ammarmuhammad992@gmail.com</a></li>
+            <li><a href="tel:+923226258404">(+92) 322 625 8404</a></li>
+            <li><a href="https://linkedin.com/in/mammar2826/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li>Lahore, Pakistan</li>
+          </ul>
         </div>
+        <div class="portrait-frame">
+          <img src="ammar.jpeg" alt="Portrait of Muhammad Ammar" width="1081" height="721">
+          <p class="portrait-badge"><span class="live-dot" aria-hidden="true"></span>Lahore, Pakistan</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="proof-wrap">
+      <div class="wrap">
+        <p class="proof-note">Outcomes from shipped product work.</p>
+        <div class="proof">
+          <article><a href="#pando"><strong>10,000+</strong><span>Monthly active users</span><em>Pando Electric</em></a></article>
+          <article><a href="#healthacademia"><strong>8,000</strong><span>Downloads in a quarter</span><em>Healthacademia</em></a></article>
+          <article><a href="#freelance"><strong>4.6★</strong><span>From 300+ launch reviews</span><em>Freelance marketplace</em></a></article>
+          <article><a href="#semieta"><strong>30%</strong><span>Fewer double-bookings</span><em>Semieta Site Access</em></a></article>
+        </div>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Muhammad Ammar</h1>
-                    <p class="title">Senior Mobile App Developer</p>
-                    <p>4+ years building high-performance cross-platform apps with <strong>Flutter</strong>, <strong>React Native</strong> & <strong>SwiftUI</strong>. Expert in scalable mobile architecture, API integration, and performance optimization.</p>
-                    <div class="cta-buttons">
-                        <a href="https://linkedin.com/in/mammar2826/" target="_blank" class="btn-primary">
-                            <i class="fab fa-linkedin"></i> LinkedIn Profile
-                        </a>
-                        <a href="Muhammad_Ammar_Resume.pdf" download class="btn-secondary">
-                            <i class="fas fa-download"></i> Download Resume
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="profile-section">
-                    <img src="ammar.jpeg" alt="Muhammad Ammar" class="profile-image">
-                    <div class="profile-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>(+92) 3226258404</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>ammarmuhammad992@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Lahore, Pakistan</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Eleven products, from EV chargers to exam prep.</h2>
+          </div>
+          <p class="section-lede">Filter by stack, then open a project for the outcome, the technologies, and the store listing.</p>
         </div>
+
+        <div class="toolbar">
+          <div class="filters" role="toolbar" aria-label="Filter projects">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-filter="react-native" aria-pressed="false">React Native</button>
+            <button class="filter" type="button" data-filter="flutter" aria-pressed="false">Flutter</button>
+            <button class="filter" type="button" data-filter="swift" aria-pressed="false">Swift</button>
+            <button class="filter" type="button" data-filter="ai" aria-pressed="false">AI</button>
+            <button class="filter" type="button" data-filter="iot" aria-pressed="false">IoT</button>
+          </div>
+          <p class="result-count" aria-live="polite" data-count>11 projects</p>
+        </div>
+
+        <div class="work-grid is-featured">
+          <article class="work" id="pando" data-tags="react-native iot">
+            <div class="cover c-pando">
+              <span class="index">01</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-pando">
+                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
+                  <div class="s-kicker">Pando</div>
+                  <div class="s-title">Charging</div>
+                  <div class="ring"><div><b>42.8</b><span>kWh</span></div></div>
+                  <div class="s-card"><div class="s-row"><span>Station A4</span><b class="hi">Active</b></div></div>
+                  <div class="s-card"><div class="s-row"><span>Bluetooth</span><b>Connected</b></div></div>
+                  <div class="s-bar"><span style="width:72%"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">EV charging · React Native</p>
+              <h3>Pando Electric Gen 2.0</h3>
+              <p class="blurb">IoT charging platform with Bluetooth charger control, live session telemetry, and billing.</p>
+              <ul class="metrics">
+                <li><strong>10k+</strong><span>monthly active users</span></li>
+                <li><strong>3</strong><span>countries in six months</span></li>
+              </ul>
+              <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Bluetooth</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Pando Electric Gen 2.0</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/pando-electric/id6741189483" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="store-link" href="https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2" target="_blank" rel="noopener noreferrer">Play Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">EV charging · React Native</p>
+                <h2>Pando Electric Gen 2.0</h2>
+                <p class="case-lead">A smart EV charging network with Bluetooth device control, real-time session telemetry, and billing.</p>
+                <ul class="case-points">
+                  <li>Bluetooth charger control paired with live energy telemetry.</li>
+                  <li>Passed 10,000 monthly active users across three countries within six months of release.</li>
+                  <li>Session, power, and billing flows for day-to-day charging operations.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Bluetooth</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/pando-electric/id6741189483" target="_blank" rel="noopener noreferrer">App Store</a>
+                  <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2" target="_blank" rel="noopener noreferrer">Play Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="healthacademia" data-tags="react-native">
+            <div class="cover c-health">
+              <span class="index">02</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-health">
+                  <div class="s-top"><span>9:41</span><span>00:12:20</span></div>
+                  <div class="s-kicker">Healthacademia</div>
+                  <div class="s-title">Question 18</div>
+                  <div class="s-sub">of 40 · Block 3</div>
+                  <div class="s-card opt">Adaptive pacing</div>
+                  <div class="s-card opt on">Timed simulation</div>
+                  <div class="s-card opt">Review later</div>
+                  <div class="s-bar"><span style="width:45%"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Medical exams · React Native</p>
+              <h3>Healthacademia</h3>
+              <p class="blurb">Regional exam platform with customizable assessments, adaptive difficulty, and timed simulations.</p>
+              <ul class="metrics">
+                <li><strong>8,000</strong><span>downloads in quarter one</span></li>
+                <li><strong>4.4★</strong><span>rating after launch</span></li>
+              </ul>
+              <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Healthacademia</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/healthcademia-app/id6608980560" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="store-link" href="https://play.google.com/store/apps/details?id=com.healthcademia.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Medical exams · React Native</p>
+                <h2>Healthacademia</h2>
+                <p class="case-lead">A regional health assessment app with customizable exams and simulation testing.</p>
+                <ul class="case-points">
+                  <li>More than 500 question sets, adaptive difficulty, and a timed simulation mode.</li>
+                  <li>8,000 downloads and a 4.4-star rating in the first quarter after launch.</li>
+                  <li>Structured preparation for regional medical exams.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Git</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/healthcademia-app/id6608980560" target="_blank" rel="noopener noreferrer">App Store</a>
+                  <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.healthcademia.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="semieta" data-tags="swift">
+            <div class="cover c-semieta">
+              <span class="index">03</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-semieta">
+                  <div class="s-top"><span>9:41</span><span class="hi">PK</span></div>
+                  <div class="s-kicker">Semieta</div>
+                  <div class="s-title">Site access</div>
+                  <div class="cal" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="s-card"><div class="s-row"><span>Lab 2 · 14:00</span><b class="hi">Booked</b></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Facility access · SwiftUI</p>
+              <h3>Semieta Site Access</h3>
+              <p class="blurb">Facility management for booking resources and access, with timezone-aware conflict checks.</p>
+              <ul class="metrics">
+                <li><strong>200+</strong><span>staff across five offices</span></li>
+                <li><strong>30%</strong><span>fewer double-bookings</span></li>
+              </ul>
+              <ul class="tech"><li>SwiftUI</li><li>Swift</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Semieta Site Access</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/semieta-site-access/id6760181040" target="_blank" rel="noopener noreferrer">App Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Facility access · SwiftUI</p>
+                <h2>Semieta Site Access</h2>
+                <p class="case-lead">An iOS facility platform for booking resources, access levels, and auditing timezones.</p>
+                <ul class="case-points">
+                  <li>Resource booking for 200+ staff across five offices.</li>
+                  <li>Multi-timezone conflict detection on the reservation flow.</li>
+                  <li>Double-booking incidents reduced by 30%.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>Swift</li><li>SwiftUI</li><li>MVC</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/semieta-site-access/id6760181040" target="_blank" rel="noopener noreferrer">App Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="university" data-tags="react-native">
+            <div class="cover c-uni">
+              <span class="index">04</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-uni">
+                  <div class="s-top"><span>9:41</span><span>3 due</span></div>
+                  <div class="s-kicker">10Pearls</div>
+                  <div class="s-title">Courses</div>
+                  <div class="s-card"><div class="s-row"><b>Flutter</b><span class="hi">72%</span></div><div class="s-bar"><span style="width:72%"></span></div></div>
+                  <div class="s-card"><div class="s-row"><b>Cloud</b><span class="hi">41%</span></div><div class="s-bar"><span style="width:41%"></span></div></div>
+                  <div class="s-card"><div class="s-row"><b>Quiz</b><span class="hi">Ready</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Learning · React Native</p>
+              <h3>10Pearls University</h3>
+              <p class="blurb">Enterprise learning app for tech and non-tech courses, bootcamps, quizzes, and assessments.</p>
+              <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: 10Pearls University</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/10pearls-university/id6447512915" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="store-link" href="https://play.google.com/store/apps/details?id=com.tenpearls.university" target="_blank" rel="noopener noreferrer">Play Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Learning · React Native</p>
+                <h2>10Pearls University</h2>
+                <p class="case-lead">Enterprise mobile learning with courses, bootcamps, quizzes, and assessments.</p>
+                <ul class="case-points">
+                  <li>Tech and non-tech course catalogs inside one client.</li>
+                  <li>Bootcamps with quizzes and assessments.</li>
+                  <li>Notifications, analytics, and crash reporting around the learning loop.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/10pearls-university/id6447512915" target="_blank" rel="noopener noreferrer">App Store</a>
+                  <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.tenpearls.university" target="_blank" rel="noopener noreferrer">Play Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="jeenie" data-tags="flutter">
+            <div class="cover c-jeenie">
+              <span class="index">05</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-jeenie">
+                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
+                  <div class="s-kicker">Jeenie</div>
+                  <div class="s-title">Interpret</div>
+                  <div class="avatars"><span></span><span></span></div>
+                  <div class="bubble">Interpreter connected</div>
+                  <div class="bubble me">Video is on</div>
+                  <div class="s-card"><div class="s-row"><span>Call</span><b class="hi">00:12</b></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Live interpreting · Flutter</p>
+              <h3>Jeenie</h3>
+              <p class="blurb">24/7 live interpreting with messaging and video for teams that need a person on the call.</p>
+              <ul class="tech"><li>Flutter</li><li>Dart</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Jeenie</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="store-link" href="https://play.google.com/store/apps/details?id=com.newsolo" target="_blank" rel="noopener noreferrer">Play Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Live interpreting · Flutter</p>
+                <h2>Jeenie</h2>
+                <p class="case-lead">A real-time collaboration client for 24/7 live interpreting, messaging, and video.</p>
+                <ul class="case-points">
+                  <li>Live interpreting with messaging beside the call.</li>
+                  <li>Video streaming for teams that need coverage around the clock.</li>
+                  <li>Flutter client using Firebase, real-time streams, and crash reporting.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>Flutter</li><li>Dart</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Riverpod</li><li>Bloc</li><li>Provider</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432" target="_blank" rel="noopener noreferrer">App Store</a>
+                  <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.newsolo" target="_blank" rel="noopener noreferrer">Play Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="freelance" data-tags="react-native">
+            <div class="cover c-free">
+              <span class="index">06</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-free">
+                  <div class="s-top"><span>9:41</span><span class="hi">4.6</span></div>
+                  <div class="s-kicker">Marketplace</div>
+                  <div class="s-title">Open briefs</div>
+                  <div class="s-card"><b>Mobile redesign</b><div class="s-sub">Fixed scope · Remote</div></div>
+                  <div class="s-card"><b>API integration</b><div class="s-sub">2 proposals</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Marketplace · React Native</p>
+              <h3>Freelance Marketplace</h3>
+              <p class="blurb">A marketplace connecting clients and contractors, taken from concept to both stores in four months.</p>
+              <ul class="metrics">
+                <li><strong>4.6★</strong><span>within six weeks</span></li>
+                <li><strong>300+</strong><span>launch reviews</span></li>
+              </ul>
+              <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Redux</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Freelance Marketplace</span></button>
+                <span class="note-pill">Shipped to both stores</span>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Marketplace · React Native</p>
+                <h2>Freelance Marketplace</h2>
+                <p class="case-lead">A project marketplace connecting clients with contractors for service delivery.</p>
+                <ul class="case-points">
+                  <li>From concept to an App Store and Play Store release in four months.</li>
+                  <li>4.6-star rating from more than 300 reviews within six weeks of launch.</li>
+                  <li>Client and contractor flows on a shared React Native client.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Redux</li><li>REST</li></ul>
+                <p class="case-note">Shipped to both stores. Public listing links are not included here.</p>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="aims" data-tags="react-native">
+            <div class="cover c-aims">
+              <span class="index">07</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-aims">
+                  <div class="s-top"><span>9:41</span><span>AIMS+</span></div>
+                  <div class="s-kicker">Assessment</div>
+                  <div class="s-title">Session</div>
+                  <div class="s-sub">Custom evaluation</div>
+                  <div class="s-card"><div class="s-row"><span>Diagnostics</span><b class="hi">Live</b></div></div>
+                  <div class="s-card"><div class="s-row"><span>Sections</span><b>6 / 8</b></div></div>
+                  <div class="s-bar"><span style="width:75%"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Assessments · React Native</p>
+              <h3>AIMS+</h3>
+              <p class="blurb">Assessment suite with customizable evaluations, push routines, and localized diagnostics.</p>
+              <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Firebase</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: AIMS+</span></button>
+                <a class="store-link" href="https://apps.apple.com/pk/app/aims/id6746238532" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="store-link" href="https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Assessments · React Native</p>
+                <h2>AIMS+</h2>
+                <p class="case-lead">An assessment suite for customizable evaluations, with synchronized push routines and localized diagnostics.</p>
+                <ul class="case-points">
+                  <li>Custom evaluations with a shared state model.</li>
+                  <li>Push routines tied to the assessment session.</li>
+                  <li>Runtime localized diagnostics inside the React Native client.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li></ul>
+                <div class="case-links">
+                  <a class="btn-solid" href="https://apps.apple.com/pk/app/aims/id6746238532" target="_blank" rel="noopener noreferrer">App Store</a>
+                  <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
+                </div>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="photo" data-tags="swift ai">
+            <div class="cover c-photo">
+              <span class="index">08</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-photo">
+                  <div class="s-top"><span>9:41</span><span class="hi">AI</span></div>
+                  <div class="s-kicker">Edit</div>
+                  <div class="s-title">Portrait</div>
+                  <div class="photo-stage"></div>
+                  <div class="chips"><span>Clean</span><span class="on">Tone</span><span>Soft</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Photo · SwiftUI</p>
+              <h3>AI Photo Editing Suite</h3>
+              <p class="blurb">Image editing with AI filters, retouching, and real-time processing. Launched on both stores.</p>
+              <ul class="tech"><li>SwiftUI</li><li>Core Image</li><li>Swift concurrency</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: AI Photo Editing Suite</span></button>
+                <span class="note-pill">Shipped to both stores</span>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Photo · SwiftUI</p>
+                <h2>AI Photo Editing Suite</h2>
+                <p class="case-lead">An image editor with AI-powered filters, retouching, and real-time processing.</p>
+                <ul class="case-points">
+                  <li>Filters and retouching with real-time preview.</li>
+                  <li>Launched on the App Store and Play Store on a fixed deadline.</li>
+                  <li>SwiftUI client using Core Image and Swift concurrency.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>SwiftUI</li><li>Core Image</li><li>AI engine APIs</li><li>Swift concurrency</li></ul>
+                <p class="case-note">Shipped to both stores. Public listing links are not included here.</p>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="kiosk" data-tags="swift ai">
+            <div class="cover c-kiosk">
+              <span class="index">09</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-kiosk">
+                  <div class="s-top"><span>9:41</span><span>Kiosk</span></div>
+                  <div class="s-kicker">Assessment</div>
+                  <div class="s-title">Next item</div>
+                  <div class="s-card">The next question follows this answer.</div>
+                  <div class="s-bar"><span style="width:38%"></span></div>
+                  <div class="s-card"><div class="s-row"><span>Mode</span><b class="hi">Adaptive</b></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Kiosk · Swift</p>
+              <h3>AI Assessment Kiosk</h3>
+              <p class="blurb">Kiosk assessments with AI question routing and adaptive logic. Launched on both stores.</p>
+              <ul class="tech"><li>Swift</li><li>UIKit</li><li>Combine</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: AI Assessment Kiosk</span></button>
+                <span class="note-pill">Shipped to both stores</span>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Kiosk · Swift</p>
+                <h2>AI Assessment Kiosk</h2>
+                <p class="case-lead">A kiosk system with AI-driven question routing and adaptive assessment logic.</p>
+                <ul class="case-points">
+                  <li>Question routing that follows the previous answer.</li>
+                  <li>Adaptive assessment flow for a kiosk session.</li>
+                  <li>Launched on the App Store and Play Store on a fixed deadline.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>Swift</li><li>UIKit</li><li>Combine</li><li>On-device AI processing</li></ul>
+                <p class="case-note">Shipped to both stores. Public listing links are not included here.</p>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="phishing" data-tags="react-native">
+            <div class="cover c-phish">
+              <span class="index">10</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-phish">
+                  <div class="s-top"><span>9:41</span><span class="hi">ALERT</span></div>
+                  <div class="s-kicker">Shield</div>
+                  <div class="s-title">Lookalike</div>
+                  <div class="s-card"><b>acme-login.co</b><div class="s-sub hi">Blocked</div></div>
+                  <div class="s-card"><b>acme.com</b><div class="s-sub">Known domain</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Security · React Native</p>
+              <h3>Phishing Prevention Tool</h3>
+              <p class="blurb">A security app that detects lookalike domain names and blocks the visit.</p>
+              <ul class="tech"><li>React Native</li><li>JavaScript</li><li>Native layers</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Phishing Prevention Tool</span></button>
+                <span class="note-pill">No public listing</span>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Security · React Native</p>
+                <h2>Phishing Prevention Tool</h2>
+                <p class="case-lead">A security application that detects lookalike domain names to prevent phishing attacks.</p>
+                <ul class="case-points">
+                  <li>Compares a visited host with a known domain.</li>
+                  <li>Flags lookalike names before the page is trusted.</li>
+                  <li>React Native shell with native security layers.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>React Native</li><li>JavaScript</li><li>Native security layers</li></ul>
+                <p class="case-note">No public store listing is attached to this project.</p>
+              </div></div>
+            </template>
+          </article>
+
+          <article class="work" id="community" data-tags="swift">
+            <div class="cover c-community">
+              <span class="index">11</span>
+              <div class="phone" aria-hidden="true"><span class="notch"></span>
+                <div class="screen s-community">
+                  <div class="s-top"><span>9:41</span><span>Week</span></div>
+                  <div class="s-kicker">Community</div>
+                  <div class="s-title">Events</div>
+                  <div class="s-card"><b>Thursday gathering</b><div class="s-sub">18:30 · Hall</div></div>
+                  <div class="s-card"><b>Study circle</b><div class="s-sub">Saturday</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <p class="eyebrow">Community · SwiftUI</p>
+              <h3>Religion-Based Community App</h3>
+              <p class="blurb">A community app for events, activities, and religious content on iOS.</p>
+              <ul class="tech"><li>SwiftUI</li><li>Swift</li><li>Core Data</li></ul>
+              <div class="work-actions">
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Religion-Based Community App</span></button>
+                <span class="note-pill">No public listing</span>
+              </div>
+            </div>
+            <template>
+              <div class="case-layout"><div class="case-copy">
+                <p class="eyebrow">Community · SwiftUI</p>
+                <h2>Religion-Based Community App</h2>
+                <p class="case-lead">A community platform for managing events, activities, and religious content.</p>
+                <ul class="case-points">
+                  <li>Event and activity listings for a community.</li>
+                  <li>Religious content kept alongside the calendar.</li>
+                  <li>Native iOS client with SwiftUI and Core Data.</li>
+                </ul>
+                <p class="stack-label">Stack</p>
+                <ul class="tech"><li>Swift</li><li>SwiftUI</li><li>iOS SDK</li><li>Core Data</li></ul>
+                <p class="case-note">No public store listing is attached to this project.</p>
+              </div></div>
+            </template>
+          </article>
+        </div>
+        <p class="empty" id="emptyState" hidden>No projects in this filter.</p>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Expertise</h2>
-                <p>Specialized in cross-platform mobile development with deep expertise in modern frameworks and tools</p>
-            </div>
-            <div class="section-card visible">
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fab fa-flutter"></i> Mobile Frameworks</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">React Native</span>
-                            <span class="skill-tag">SwiftUI</span>
-                            <span class="skill-tag">Dart</span>
-                            <span class="skill-tag">Swift</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Development Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">Xcode</span>
-                            <span class="skill-tag">Android Studio</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Docker</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3><i class="fas fa-cogs"></i> Backend & APIs</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Django</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Experience</p>
+            <h2>Five roles, from internship to senior consultant.</h2>
+          </div>
+          <p class="section-lede">Most of the product work above was delivered at 10Pearls, across three successive titles.</p>
         </div>
+        <div class="roles">
+          <article class="role">
+            <div class="role-aside"><strong>Jul 2025 — May 2026</strong>Lahore, Pakistan</div>
+            <div>
+              <h3>Senior Software Consultant</h3>
+              <p class="role-company">10Pearls (Pvt.) Ltd</p>
+              <ul class="role-list">
+                <li>Spearheaded React Native development for two AI-powered products (AI Assessment Kiosk and AI Photo Editing Suite), successfully launching both on the App Store and Play Store within stipulated deadlines.</li>
+                <li>Instituted Clean Architecture with MVVM across a 6-engineer codebase, which accelerated new feature onboarding by 40% and decreased cross-module merge conflicts by 55%.</li>
+                <li>Diagnosed three rendering performance bottlenecks using Flipper and React DevTools, subsequently optimizing state management and bridge calls, thereby reducing UI jank from 18 dropped frames per second to under 2 in release builds.</li>
+                <li>Integrated Firebase Authentication, Cloud Messaging (FCM), and Crashlytics, achieving a 99.5% push notification delivery rate and eliminating undetected crash incidents for two consecutive quarters.</li>
+                <li>Facilitated bi-weekly code reviews for four engineers, elevating unit and UI test coverage from 42% to 75% and reducing the average pull request review cycle from four days to two.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-aside"><strong>Jun 2023 — Jun 2025</strong>Lahore, Pakistan</div>
+            <div>
+              <h3>Software Consultant</h3>
+              <p class="role-company">10Pearls (Pvt.) Ltd</p>
+              <ul class="role-list">
+                <li>Developed a Smart EV Charging Network application in React Native, incorporating Bluetooth device control and real-time session telemetry, which achieved over 10,000 monthly active users across three countries within six months of its release.</li>
+                <li>Engineered real-time messaging and video conferencing capabilities for an Enterprise Communication Platform using React Native, maintaining over 500 concurrent users with average call-setup latency below 200 milliseconds.</li>
+                <li>Delivered a timezone-aware Enterprise Resource Booking System for 200+ staff across five offices, featuring multi-timezone conflict detection that reduced double-booking incidents by 30%.</li>
+                <li>Rectified 12 state-management regressions attributed to race conditions in asynchronous API calls by implementing structured Redux middleware fixes, consequently decreasing the Application Not Responding (ANR) rate by 35% over two sprints.</li>
+                <li>Enhanced unit, UI, and API test coverage from 30% to 68%, which enabled a GitHub Actions CI gate that successfully blocked 95% of regressions before they entered the quality assurance queue.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-aside"><strong>Jun 2022 — Jun 2023</strong>Lahore, Pakistan</div>
+            <div>
+              <h3>Associate Software Consultant</h3>
+              <p class="role-company">10Pearls (Pvt.) Ltd</p>
+              <ul class="role-list">
+                <li>Constructed a Medical Exam Prep React Native application featuring over 500 question sets, adaptive difficulty, and a timed simulation mode; the app attained 8,000 downloads and a 4.4-star rating in the first quarter post-launch.</li>
+                <li>Re-architected an E-Learning quiz engine, transitioning from synchronous callbacks to asynchronous data loading, which halved quiz-screen load times and improved 30-day user retention by 20%.</li>
+                <li>Specified and integrated more than 15 REST endpoints in collaboration with 3 backend engineers, utilizing versioned API contracts to maintain zero breaking-change incidents across 4 staged rollouts.</li>
+                <li>Developed a Freelance Marketplace React Native application from conception to App Store and Play Store release within four months, achieving a 4.6-star rating from over 300 reviews within six weeks of its launch.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-aside"><strong>Apr 2021 — May 2022</strong>Lahore, Pakistan</div>
+            <div>
+              <h3>Junior Software Engineer</h3>
+              <p class="role-company">Wishsol Pvt Ltd</p>
+              <ul class="role-list">
+                <li>Built 3 React Native client applications that integrated REST APIs with backend systems, delivering 8 feature releases over 13 months while concurrently completing a full-time Computer Science degree at NUST.</li>
+                <li>Contributed to a Clean Architecture refactoring initiative under senior supervision, successfully reducing redundant component code by 25% across 2 production applications.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-aside"><strong>May 2021 — Sep 2021</strong>Lahore, Pakistan</div>
+            <div>
+              <h3>Web Developer Intern</h3>
+              <p class="role-company">Techylem Solutions Pvt Ltd</p>
+              <ul class="role-list">
+                <li>Maintained Flutter-based mobile applications for both Android and iOS, triaging over 15 defects and enhancing stability across 2 release cycles.</li>
+                <li>Assessed and resolved performance issues in production builds, resulting in a 20% reduction in average screen render time.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-   <!-- Experience Section -->
-<section id="experience" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Professional Experience</h2>
-            <p>Progressive career delivering production-ready mobile solutions at scale</p>
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Capabilities</p>
+            <h2>How the work gets built.</h2>
+          </div>
+          <p class="section-lede">Architecture, measurement, and release discipline around the frameworks below.</p>
         </div>
-        <div class="section-card">
-            <div class="timeline">
-
-                <!-- 1. Senior Software Consultant -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
-                                <div class="company">10Pearls (Pvt.) Ltd</div>
-                                <div class="role">Senior Software Consultant</div>
-                            </div>
-                            <div class="dates">July 2025 – May 2026 | Lahore, Pakistan</div>
-                        </div>
-                        <ul class="job-desc">
-                            <li>Spearheaded React Native development for two AI-powered products (AI Assessment Kiosk and AI Photo Editing Suite), successfully launching both on the App Store and Play Store within stipulated deadlines.</li>
-                            <li>Instituted Clean Architecture with MVVM across a 6-engineer codebase, which accelerated new feature onboarding by 40% and decreased cross-module merge conflicts by 55%.</li>
-                            <li>Diagnosed three rendering performance bottlenecks using Flipper and React DevTools, subsequently optimizing state management and bridge calls, thereby reducing UI jank from 18 dropped frames per second to under 2 in release builds.</li>
-                            <li>Integrated Firebase Authentication, Cloud Messaging (FCM), and Crashlytics, achieving a 99.5% push notification delivery rate and eliminating undetected crash incidents for two consecutive quarters.</li>
-                            <li>Facilitated bi-weekly code reviews for four engineers, elevating unit and UI test coverage from 42% to 75% and reducing the average pull request review cycle from four days to two.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 2. Software Consultant -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
-                                <div class="company">10Pearls (Pvt.) Ltd</div>
-                                <div class="role">Software Consultant</div>
-                            </div>
-                            <div class="dates">June 2023 – June 2025 | Lahore, Pakistan</div>
-                        </div>
-                        <ul class="job-desc">
-                            <li>Developed a Smart EV Charging Network application in React Native, incorporating Bluetooth device control and real-time session telemetry, which achieved over 10,000 monthly active users across three countries within six months of its release.</li>
-                            <li>Engineered real-time messaging and video conferencing capabilities for an Enterprise Communication Platform using React Native, maintaining over 500 concurrent users with average call-setup latency below 200 milliseconds.</li>
-                            <li>Delivered a timezone-aware Enterprise Resource Booking System for 200+ staﬀ across five oﬃces, featuring multi-timezone conflict detection that reduced double-booking incidents by 30%.</li>
-                            <li>Rectified 12 state-management regressions attributed to race conditions in asynchronous API calls by implementing structured Redux middleware fixes, consequently decreasing the Application Not Responding (ANR) rate by 35% over two sprints.</li>
-                            <li>Enhanced unit, UI, and API test coverage from 30% to 68%, which enabled a GitHub Actions CI gate that successfully blocked 95% of regressions before they entered the quality assurance queue.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 3. Associate Software Consultant -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
-                                <div class="company">10Pearls (Pvt.) Ltd</div>
-                                <div class="role">Associate Software Consultant</div>
-                            </div>
-                            <div class="dates">June 2022 – June 2023 | Lahore, Pakistan</div>
-                        </div>
-                        <ul class="job-desc">
-                            <li>Constructed a Medical Exam Prep React Native application featuring over 500 question sets, adaptive diﬃculty, and a timed simulation mode; the app attained 8,000 downloads and a 4.4-star rating in the first quarter post-launch.</li>
-                            <li>Re-architected an E-Learning quiz engine, transitioning from synchronous callbacks to asynchronous data loading, which halved quiz-screen load times and improved 30-day user retention by 20%.</li>
-                            <li>Specified and integrated more than 15 REST endpoints in collaboration with 3 backend engineers, utilizing versioned API contracts to maintain zero breaking-change incidents across 4 staged rollouts.</li>
-                            <li>Developed a Freelance Marketplace React Native application from conception to App Store and Play Store release within four months, achieving a 4.6-star rating from over 300 reviews within six weeks of its launch.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 4. Junior Software Engineer -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
-                                <div class="company">Wishsol Pvt Ltd</div>
-                                <div class="role">Junior Software Engineer</div>
-                            </div>
-                            <div class="dates">Apr. 2021 – May 2022 | Lahore, Pakistan</div>
-                        </div>
-                        <ul class="job-desc">
-                            <li>Built 3 React Native client applications that integrated REST APIs with backend systems, delivering 8 feature releases over 13 months while concurrently completing a full-time Computer Science degree at NUST.</li>
-                            <li>Contributed to a Clean Architecture refactoring initiative under senior supervision, successfully reducing redundant component code by 25% across 2 production applications.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 5. Web Developer Intern -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
-                                <div class="company">Techylem Solutions Pvt Ltd</div>
-                                <div class="role">Web Developer Intern</div>
-                            </div>
-                            <div class="dates">May 2021 – Sept. 2021 | Lahore, Pakistan</div>
-                        </div>
-                        <ul class="job-desc">
-                            <li>Maintained Flutter-based mobile applications for both Android and iOS, triaging over 15 defects and enhancing stability across 2 release cycles.</li>
-                            <li>Assessed and resolved performance issues in production builds, resulting in a 20% reduction in average screen render time.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+        <div class="principles">
+          <article>
+            <h3>Architecture</h3>
+            <p>Clean Architecture and MVVM so a feature can land without tangling the rest of a multi-engineer codebase.</p>
+          </article>
+          <article>
+            <h3>Performance</h3>
+            <p>Profile render paths and bridge traffic with Flipper and React DevTools before they show up as jank in a release build.</p>
+          </article>
+          <article>
+            <h3>Release discipline</h3>
+            <p>Unit, UI, and API tests, Crashlytics, and App Store / Play Store launches treated as part of the product.</p>
+          </article>
         </div>
+        <div class="skill-groups">
+          <div>
+            <h3>Mobile</h3>
+            <ul class="tags">
+              <li>Flutter</li><li>React Native</li><li>SwiftUI</li><li>Dart</li><li>Swift</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul class="tags">
+              <li>Firebase</li><li>Xcode</li><li>Android Studio</li><li>Git</li><li>Docker</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Backend &amp; APIs</h3>
+            <ul class="tags">
+              <li>Node.js</li><li>Django</li><li>REST APIs</li><li>TypeScript</li><li>Python</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="wrap">
+        <p class="eyebrow">Education</p>
+        <div class="edu">
+          <div class="edu-copy">
+            <h3>Bachelor of Science in Computer Science</h3>
+            <p>National University of Sciences and Technology (NUST)<br>Islamabad, Pakistan</p>
+          </div>
+          <p class="edu-dates">2018 — 2022</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <a class="footer-email" href="mailto:ammarmuhammad992@gmail.com">ammarmuhammad992@gmail.com</a>
+      <ul class="footer-links">
+        <li><a href="tel:+923226258404">(+92) 322 625 8404</a></li>
+        <li>Lahore, Pakistan</li>
+        <li><a href="https://linkedin.com/in/mammar2826/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="Muhammad_Ammar_Resume.pdf" download>Download resume</a></li>
+      </ul>
+      <p class="copyright">© 2026 Muhammad Ammar</p>
     </div>
-</section>
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Key Projects</h2>
-                <p>Diverse portfolio spanning healthcare, finance, education, and enterprise solutions</p>
-            </div>
-            <div class="section-card">
-                <div class="projects-grid">
-                    
-                    <!-- 1. 10Pearls University -->
-                    <div class="project-card" onclick="openProjectModal('10Pearls University', 'Enterprise mobile learning platform offering tech and non-tech courses, bootcamps with quizzes and assessments.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/10pearls-university/id6447512915', 'https://play.google.com/store/apps/details?id=com.tenpearls.university')">
-                        <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3 class="project-title">10Pearls University</h3>
-                        <p class="project-desc">Comprehensive learning platform offering tech and non-tech courses, bootcamps with quizzes and assessments</p>
-                        <div class="project-tech">React Native • TypeScript</div>
-                    </div>
+  </footer>
 
-                    <!-- 2. Pando Electric Gen 2.0 -->
-                    <div class="project-card" onclick="openProjectModal('Pando Electric Gen 2.0', 'IoT-enabled tracking platform with real-time energy telemetry analytics and power control management.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/pando-electric/id6741189483', 'https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2')">
-                        <div class="project-icon"><i class="fas fa-charging-station"></i></div>
-                        <h3 class="project-title">Pando Electric Gen 2.0</h3>
-                        <p class="project-desc">IoT-enabled charging platform with Bluetooth connectivity for charger control and billing management</p>
-                        <div class="project-tech">React Native • Bluetooth • IoT</div>
-                    </div>
+  <dialog id="caseDialog" aria-label="Project details">
+    <div class="dialog-shell">
+      <button class="dialog-close" type="button" data-close aria-label="Close project details">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="dialog-body"></div>
+    </div>
+  </dialog>
 
-                    <!-- 3. Healthacademia -->
-                    <div class="project-card" onclick="openProjectModal('Healthacademia', 'Regional digital health application containing custom exam platforms and structured preparation suites.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git', 'https://apps.apple.com/pk/app/healthcademia-app/id6608980560', 'https://play.google.com/store/apps/details?id=com.healthcademia.amirapp')">
-                        <div class="project-icon"><i class="fas fa-stethoscope"></i></div>
-                        <h3 class="project-title">Healthacademia</h3>
-                        <p class="project-desc">Regional health assessment platform with customizable exams and simulation testing</p>
-                        <div class="project-tech">React Native • Medical Prep</div>
-                    </div>
+  <script>
+    const header = document.querySelector(".site-header");
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector(".nav-toggle");
+    const navLinks = [...nav.querySelectorAll('a[href^="#"]')];
+    const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
 
-                    <!-- 4. Jeenie -->
-                    <div class="project-card" onclick="openProjectModal('Jeenie', 'Real-time 24/7 team translation and collaboration platform enabling messaging and video conferencing.', 'Flutter, Dart, Firebase, MVVM, REST APIs, Push Notifications, Riverpod, Bloc, Provider, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432', 'https://play.google.com/store/apps/details?id=com.newsolo')">
-                        <div class="project-icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="project-title">Jeenie</h3>
-                        <p class="project-desc">Real-time team collaboration platform enabling 24/7 live interpreting, messaging, and video streaming</p>
-                        <div class="project-tech">Flutter • Real-Time Streams</div>
-                    </div>
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
 
-                    <!-- 5. Semieta Site Access -->
-                    <div class="project-card" onclick="openProjectModal('Semieta Site Access', 'Highly secure corporate site management application controlling regional resource assets and authorization tokens.', 'Swift, SwiftUI, MVC, Firebase, MVVM, REST APIs, Push Notifications, Git, Crash reporting, Analytics', 'https://apps.apple.com/pk/app/semieta-site-access/id6760181040', '')">
-                        <div class="project-icon"><i class="fas fa-calendar-check"></i></div>
-                        <h3 class="project-title">Semieta Site Access</h3>
-                        <p class="project-desc">Facility management platform for booking resources, access levels, and auditing corporate timezones</p>
-                        <div class="project-tech">SwiftUI • Swift • Secure iOS</div>
-                    </div>
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
 
-                    <!-- 6. AIMS+ -->
-                    <div class="project-card" onclick="openProjectModal('AIMS+', 'Optimized medical testing engine serving customizable evaluations with unified state monitoring rules.', 'React Native, TypeScript, JavaScript, Firebase, MVVM, REST APIs, Push Notifications, Redux, Context, Zustand, Git', 'https://apps.apple.com/pk/app/aims/id6746238532', 'https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp')">
-                        <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 class="project-title">AIMS+</h3>
-                        <p class="project-desc">Advanced educational assessment suite with synchronized push routines and runtime localized diagnostics</p>
-                        <div class="project-tech">React Native • Assessment Engine</div>
-                    </div>
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".site-header")) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
 
-                    <!-- 7. Religion-Based Community App -->
-                    <div class="project-card" onclick="openProjectModal('Religion-Based Community App', 'Community platform for managing events, activities, and religious content.', 'Swift, SwiftUI, iOS SDK, CoreData', '', '')">
-                        <div class="project-icon"><i class="fas fa-quran"></i></div>
-                        <h3 class="project-title">Religion-Based Community App</h3>
-                        <p class="project-desc">Community platform for managing events, activities, and religious content</p>
-                        <div class="project-tech">Swift UI • iOS</div>
-                    </div>
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
 
-                    <!-- 8. Phishing Prevention Tool -->
-                    <div class="project-card" onclick="openProjectModal('Phishing Prevention Tool', 'Security application that detects lookalike domain names to prevent phishing attacks.', 'React Native, JavaScript, Native Security Layers', '', '')">
-                        <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 class="project-title">Phishing Prevention Tool</h3>
-                        <p class="project-desc">Security application that detects lookalike domain names to prevent phishing attacks</p>
-                        <div class="project-tech">React Native</div>
-                    </div>
+    const spy = () => {
+      header.classList.toggle("is-solid", window.scrollY > 20);
+      const marker = window.scrollY + 140;
+      let current = null;
+      sections.forEach((section) => {
+        if (section.offsetTop <= marker) current = section;
+      });
+      navLinks.forEach((link) => {
+        const active = Boolean(current && link.getAttribute("href") === `#${current.id}`);
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    spy();
+    window.addEventListener("scroll", spy, { passive: true });
 
-                    <!-- 9. AI Photo Editing Suite -->
-                    <div class="project-card" onclick="openProjectModal('AI Photo Editing Suite', 'Advanced image editing application with AI-powered filters, retouching, and real-time processing.', 'SwiftUI, CoreImage, AI Engine APIs, Swift Concurrency', '', '')">
-                        <div class="project-icon"><i class="fas fa-image"></i></div>
-                        <h3 class="project-title">AI Photo Editing Suite</h3>
-                        <p class="project-desc">Advanced image editing application with AI-powered filters, retouching, and real-time processing</p>
-                        <div class="project-tech">Swift UI • AI APIs</div>
-                    </div>
+    const grid = document.querySelector(".work-grid");
+    const filters = [...document.querySelectorAll(".filter")];
+    const count = document.querySelector("[data-count]");
+    const empty = document.getElementById("emptyState");
+    const works = [...grid.querySelectorAll(".work")];
 
-                    <!-- 10. AI-Powered Assessment Kiosk -->
-                    <div class="project-card" onclick="openProjectModal('AI-Powered Assessment Kiosk', 'Intelligent kiosk system with AI-driven question routing and adaptive assessment logic.', 'Swift, UIKit, Combine Framework, Local AI Processing', '', '')">
-                        <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <h3 class="project-title">AI-Powered Assessment Kiosk</h3>
-                        <p class="project-desc">Intelligent kiosk system with AI-driven question routing and adaptive assessment logic</p>
-                        <div class="project-tech">Swift • AI Routing</div>
-                    </div>
-
-                    <!-- 11. Freelance Marketplace Platform -->
-                    <div class="project-card" onclick="openProjectModal('Freelance Marketplace Platform', 'Project management marketplace connecting clients with contractors for service delivery.', 'React Native, TypeScript, Redux, REST Client Context', '', '')">
-                        <div class="project-icon"><i class="fas fa-briefcase"></i></div>
-                        <h3 class="project-title">Freelance Marketplace Platform</h3>
-                        <p class="project-desc">Project management marketplace connecting clients with contractors for service delivery</p>
-                        <div class="project-tech">React Native • Backend APIs</div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Education</h2>
-                <p>Strong academic foundation in computer science</p>
-            </div>
-            <div class="section-card">
-                <div class="education-card">
-                    <div class="education-info">
-                        <h3>Bachelor of Science in Computer Science</h3>
-                        <p>National University of Sciences and Technology (NUST)<br>Islamabad, Pakistan</p>
-                    </div>
-                    <div class="education-dates">2018 - 2022</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Smooth scrolling navigation
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        filters.forEach((item) => item.setAttribute("aria-pressed", "false"));
+        button.setAttribute("aria-pressed", "true");
+        const key = button.dataset.filter;
+        let visible = 0;
+        works.forEach((work) => {
+          const tags = (work.dataset.tags || "").split(/\s+/);
+          const show = key === "all" || tags.includes(key);
+          work.hidden = !show;
+          if (show) visible += 1;
         });
+        grid.classList.toggle("is-featured", key === "all");
+        grid.classList.toggle("is-single", visible === 1);
+        count.textContent = `${visible} project${visible === 1 ? "" : "s"}`;
+        empty.hidden = visible !== 0;
+      });
+    });
 
-        // Active nav on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            let current = 'hero';
-            
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 100 && rect.bottom >= 100) {
-                    current = section.getAttribute('id');
-                }
-            });
+    const dialog = document.getElementById("caseDialog");
+    const dialogBody = dialog.querySelector(".dialog-body");
 
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+    const openCase = (work) => {
+      const template = work.querySelector("template");
+      if (!template) return;
+      dialogBody.replaceChildren(template.content.cloneNode(true));
+      const cover = work.querySelector(".cover");
+      const layout = dialogBody.querySelector(".case-layout");
+      if (cover && layout) {
+        const clone = cover.cloneNode(true);
+        clone.classList.add("in-dialog");
+        layout.prepend(clone);
+      }
+      const heading = dialogBody.querySelector("h2");
+      if (heading) {
+        heading.id = "caseTitle";
+        dialog.setAttribute("aria-labelledby", "caseTitle");
+      }
+      if (!dialog.open) dialog.showModal();
+    };
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    grid.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      const work = event.target.closest(".work");
+      if (!work) return;
+      openCase(work);
+    });
 
-        document.querySelectorAll('.section-card, .timeline-item, .project-card, .education-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 25px 60px rgba(0,0,0,0.15)';
-            } else {
-                navbar.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)';
-            }
-        });
-
-        // --- Custom Project Modal Engine ---
-        function openProjectModal(title, description, techStack, appStoreUrl, playStoreUrl) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDesc').innerText = description;
-            document.getElementById('modalTech').innerText = techStack;
-
-            const appStoreBtn = document.getElementById('modalAppStore');
-            const playStoreBtn = document.getElementById('modalPlayStore');
-
-            // Toggle App Store button display dynamically
-            if (appStoreUrl && appStoreUrl.trim() !== "") {
-                appStoreBtn.href = appStoreUrl;
-                appStoreBtn.style.display = "inline-flex";
-            } else {
-                appStoreBtn.style.display = "none";
-            }
-
-            // Toggle Play Store button display dynamically
-            if (playStoreUrl && playStoreUrl.trim() !== "") {
-                playStoreBtn.href = playStoreUrl;
-                playStoreBtn.style.display = "inline-flex";
-            } else {
-                playStoreBtn.style.display = "none";
-            }
-
-            // Display overlay view & lock body window scroll
-            const modal = document.getElementById('projectModal');
-            modal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeProjectModal() {
-            const modal = document.getElementById('projectModal');
-            modal.style.display = "none";
-            document.body.style.overflow = "auto"; // Re-enable window scroll
-        }
-
-        function closeProjectModalOnOutsideClick(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                closeProjectModal();
-            }
-        }
-    </script>
+    dialog.querySelector("[data-close]").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  </script>
 </body>
 </html>
