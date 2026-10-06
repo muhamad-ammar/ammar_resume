@@ -649,6 +649,34 @@
     .cal i { display: block; aspect-ratio: 1; border-radius: 2px; background: rgba(255, 255, 255, 0.12); }
     .cal i.on { background: var(--hi); }
 
+    .shot {
+      max-height: 248px;
+      width: auto;
+      max-width: 88%;
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+    }
+    .work-grid.is-featured .work:nth-child(1) .shot { max-height: 390px; }
+    .case-layout.has-shots { grid-template-columns: minmax(240px, 360px) minmax(0, 1fr); }
+    .case-shots {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px;
+      background: #14161c;
+      overflow: auto;
+    }
+    .case-shots img {
+      width: min(210px, 100%);
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+    .case-shots img.wide { width: min(320px, 100%); }
+
     .c-pando { background: radial-gradient(120% 90% at 50% 100%, #1c4a3c, #0c1c18 60%); }
     .c-health { background: radial-gradient(120% 90% at 50% 100%, #1a4a52, #0e1c20 60%); }
     .c-semieta { background: radial-gradient(120% 90% at 50% 100%, #5a3a28, #1a1410 60%); }
@@ -909,7 +937,8 @@
         width: 160px;
         height: 300px;
       }
-      .role, .edu, .case-layout { grid-template-columns: 1fr; }
+      .role, .edu, .case-layout, .case-layout.has-shots { grid-template-columns: 1fr; }
+      .case-shots { max-height: none; }
       .edu { align-items: start; }
       .case-copy { padding: 22px 20px 28px; }
       .cover.in-dialog { min-height: 280px; }
@@ -989,7 +1018,7 @@
         <div class="proof">
           <article><a href="#pando"><strong>10,000+</strong><span>Monthly active users</span><em>Pando Electric</em></a></article>
           <article><a href="#healthacademia"><strong>8,000</strong><span>Downloads in a quarter</span><em>Healthacademia</em></a></article>
-          <article><a href="#freelance"><strong>4.6★</strong><span>From 300+ launch reviews</span><em>Freelance marketplace</em></a></article>
+          <article><a href="#freelance"><strong>4.6★</strong><span>From 300+ launch reviews</span><em>Staftr</em></a></article>
           <article><a href="#semieta"><strong>30%</strong><span>Fewer double-bookings</span><em>Semieta Site Access</em></a></article>
         </div>
       </div>
@@ -1021,17 +1050,7 @@
           <article class="work" id="pando" data-tags="react-native iot">
             <div class="cover c-pando">
               <span class="index">01</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-pando">
-                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
-                  <div class="s-kicker">Pando</div>
-                  <div class="s-title">Charging</div>
-                  <div class="ring"><div><b>42.8</b><span>kWh</span></div></div>
-                  <div class="s-card"><div class="s-row"><span>Station A4</span><b class="hi">Active</b></div></div>
-                  <div class="s-card"><div class="s-row"><span>Bluetooth</span><b>Connected</b></div></div>
-                  <div class="s-bar"><span style="width:72%"></span></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/pando-charging.webp" alt="Pando Electric charger session with a live charge timer and usage stats">
             </div>
             <div class="work-body">
               <p class="eyebrow">EV charging · React Native</p>
@@ -1049,7 +1068,10 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/pando-devices.webp" alt="Pando Electric property list with available chargers">
+                <img src="shots/pando-charging.webp" alt="Pando Electric charging screen with power, usage, and temperature">
+              </div><div class="case-copy">
                 <p class="eyebrow">EV charging · React Native</p>
                 <h2>Pando Electric Gen 2.0</h2>
                 <p class="case-lead">A smart EV charging network with Bluetooth device control, real-time session telemetry, and billing.</p>
@@ -1071,18 +1093,7 @@
           <article class="work" id="healthacademia" data-tags="react-native">
             <div class="cover c-health">
               <span class="index">02</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-health">
-                  <div class="s-top"><span>9:41</span><span>00:12:20</span></div>
-                  <div class="s-kicker">Healthacademia</div>
-                  <div class="s-title">Question 18</div>
-                  <div class="s-sub">of 40 · Block 3</div>
-                  <div class="s-card opt">Adaptive pacing</div>
-                  <div class="s-card opt on">Timed simulation</div>
-                  <div class="s-card opt">Review later</div>
-                  <div class="s-bar"><span style="width:45%"></span></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/health-challenges.webp" alt="Healthacademia assessments with a course mock exam progress ring">
             </div>
             <div class="work-body">
               <p class="eyebrow">Medical exams · React Native</p>
@@ -1100,7 +1111,11 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/health-challenges.webp" alt="Assessments screen for a medical exam course">
+                <img src="shots/health-median.webp" alt="Mock exam result with percentile and sample median">
+                <img src="shots/health-review.webp" alt="Question review filtered to incorrect questions">
+              </div><div class="case-copy">
                 <p class="eyebrow">Medical exams · React Native</p>
                 <h2>Healthacademia</h2>
                 <p class="case-lead">A regional health assessment app with customizable exams and simulation testing.</p>
@@ -1122,15 +1137,7 @@
           <article class="work" id="semieta" data-tags="swift">
             <div class="cover c-semieta">
               <span class="index">03</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-semieta">
-                  <div class="s-top"><span>9:41</span><span class="hi">PK</span></div>
-                  <div class="s-kicker">Semieta</div>
-                  <div class="s-title">Site access</div>
-                  <div class="cal" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="s-card"><div class="s-row"><span>Lab 2 · 14:00</span><b class="hi">Booked</b></div></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/semieta-welcome.webp" alt="Site check-in welcome screen with sign in and sign out">
             </div>
             <div class="work-body">
               <p class="eyebrow">Facility access · SwiftUI</p>
@@ -1147,7 +1154,10 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img class="wide" src="shots/semieta-role.webp" alt="Check-in choice between visitor and contractor">
+                <img class="wide" src="shots/semieta-welcome.webp" alt="Welcome screen for store sign in and sign out">
+              </div><div class="case-copy">
                 <p class="eyebrow">Facility access · SwiftUI</p>
                 <h2>Semieta Site Access</h2>
                 <p class="case-lead">An iOS facility platform for booking resources, access levels, and auditing timezones.</p>
@@ -1168,16 +1178,7 @@
           <article class="work" id="university" data-tags="react-native">
             <div class="cover c-uni">
               <span class="index">04</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-uni">
-                  <div class="s-top"><span>9:41</span><span>3 due</span></div>
-                  <div class="s-kicker">10Pearls</div>
-                  <div class="s-title">Courses</div>
-                  <div class="s-card"><div class="s-row"><b>Flutter</b><span class="hi">72%</span></div><div class="s-bar"><span style="width:72%"></span></div></div>
-                  <div class="s-card"><div class="s-row"><b>Cloud</b><span class="hi">41%</span></div><div class="s-bar"><span style="width:41%"></span></div></div>
-                  <div class="s-card"><div class="s-row"><b>Quiz</b><span class="hi">Ready</span></div></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/10pu-home.webp" alt="10Pearls University home with latest and top courses">
             </div>
             <div class="work-body">
               <p class="eyebrow">Learning · React Native</p>
@@ -1191,7 +1192,10 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/10pu-home.webp" alt="10Pearls University course catalog on the home screen">
+                <img src="shots/10pu-course.webp" alt="Course description for a business analysis blueprint">
+              </div><div class="case-copy">
                 <p class="eyebrow">Learning · React Native</p>
                 <h2>10Pearls University</h2>
                 <p class="case-lead">Enterprise mobile learning with courses, bootcamps, quizzes, and assessments.</p>
@@ -1213,17 +1217,7 @@
           <article class="work" id="jeenie" data-tags="flutter">
             <div class="cover c-jeenie">
               <span class="index">05</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-jeenie">
-                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
-                  <div class="s-kicker">Jeenie</div>
-                  <div class="s-title">Interpret</div>
-                  <div class="avatars"><span></span><span></span></div>
-                  <div class="bubble">Interpreter connected</div>
-                  <div class="bubble me">Video is on</div>
-                  <div class="s-card"><div class="s-row"><span>Call</span><b class="hi">00:12</b></div></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/jeenie-welcome.webp" alt="Jeenie welcome screen for on-demand audio and video interpreting">
             </div>
             <div class="work-body">
               <p class="eyebrow">Live interpreting · Flutter</p>
@@ -1237,7 +1231,10 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/jeenie-call.webp" alt="Live video interpreting call with an interpreter and a client team">
+                <img src="shots/jeenie-welcome.webp" alt="Jeenie language and service picker before connecting">
+              </div><div class="case-copy">
                 <p class="eyebrow">Live interpreting · Flutter</p>
                 <h2>Jeenie</h2>
                 <p class="case-lead">A real-time collaboration client for 24/7 live interpreting, messaging, and video.</p>
@@ -1259,19 +1256,11 @@
           <article class="work" id="freelance" data-tags="react-native">
             <div class="cover c-free">
               <span class="index">06</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-free">
-                  <div class="s-top"><span>9:41</span><span class="hi">4.6</span></div>
-                  <div class="s-kicker">Marketplace</div>
-                  <div class="s-title">Open briefs</div>
-                  <div class="s-card"><b>Mobile redesign</b><div class="s-sub">Fixed scope · Remote</div></div>
-                  <div class="s-card"><b>API integration</b><div class="s-sub">2 proposals</div></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/staftr-role.webp" alt="Staftr role dashboard with time tracking, documents, and messages">
             </div>
             <div class="work-body">
               <p class="eyebrow">Marketplace · React Native</p>
-              <h3>Freelance Marketplace</h3>
+              <h3>Staftr</h3>
               <p class="blurb">A marketplace connecting clients and contractors, taken from concept to both stores in four months.</p>
               <ul class="metrics">
                 <li><strong>4.6★</strong><span>within six weeks</span></li>
@@ -1279,14 +1268,18 @@
               </ul>
               <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Redux</li></ul>
               <div class="work-actions">
-                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Freelance Marketplace</span></button>
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Staftr</span></button>
                 <span class="note-pill">Shipped to both stores</span>
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/staftr-time.webp" alt="Staftr time tracking with daily hours and invoice actions">
+                <img src="shots/staftr-role.webp" alt="Assigned role with schedule, documents, and messages">
+                <img src="shots/staftr-job.webp" alt="Job details for a managed review assignment">
+              </div><div class="case-copy">
                 <p class="eyebrow">Marketplace · React Native</p>
-                <h2>Freelance Marketplace</h2>
+                <h2>Staftr</h2>
                 <p class="case-lead">A project marketplace connecting clients with contractors for service delivery.</p>
                 <ul class="case-points">
                   <li>From concept to an App Store and Play Store release in four months.</li>
@@ -1349,15 +1342,7 @@
           <article class="work" id="photo" data-tags="swift ai">
             <div class="cover c-photo">
               <span class="index">08</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-photo">
-                  <div class="s-top"><span>9:41</span><span class="hi">AI</span></div>
-                  <div class="s-kicker">Edit</div>
-                  <div class="s-title">Portrait</div>
-                  <div class="photo-stage"></div>
-                  <div class="chips"><span>Clean</span><span class="on">Tone</span><span>Soft</span></div>
-                </div>
-              </div>
+              <img class="shot" src="shots/photo-smile.webp" alt="AI portrait editor with smile variations and a save action">
             </div>
             <div class="work-body">
               <p class="eyebrow">Photo · SwiftUI</p>
@@ -1370,7 +1355,11 @@
               </div>
             </div>
             <template>
-              <div class="case-layout"><div class="case-copy">
+              <div class="case-layout has-shots"><div class="case-shots">
+                <img src="shots/photo-lips.webp" alt="Lip retouching presets in the portrait editor">
+                <img src="shots/photo-smile.webp" alt="Smile variations for a portrait">
+                <img src="shots/photo-impression.webp" alt="Impression presets for a portrait">
+              </div><div class="case-copy">
                 <p class="eyebrow">Photo · SwiftUI</p>
                 <h2>AI Photo Editing Suite</h2>
                 <p class="case-lead">An image editor with AI-powered filters, retouching, and real-time processing.</p>
@@ -1558,7 +1547,7 @@
                 <li>Constructed a Medical Exam Prep React Native application featuring over 500 question sets, adaptive difficulty, and a timed simulation mode; the app attained 8,000 downloads and a 4.4-star rating in the first quarter post-launch.</li>
                 <li>Re-architected an E-Learning quiz engine, transitioning from synchronous callbacks to asynchronous data loading, which halved quiz-screen load times and improved 30-day user retention by 20%.</li>
                 <li>Specified and integrated more than 15 REST endpoints in collaboration with 3 backend engineers, utilizing versioned API contracts to maintain zero breaking-change incidents across 4 staged rollouts.</li>
-                <li>Developed a Freelance Marketplace React Native application from conception to App Store and Play Store release within four months, achieving a 4.6-star rating from over 300 reviews within six weeks of its launch.</li>
+                <li>Developed Staftr, a freelance marketplace React Native application from conception to App Store and Play Store release within four months, achieving a 4.6-star rating from over 300 reviews within six weeks of its launch.</li>
               </ul>
             </div>
           </article>
@@ -1756,7 +1745,7 @@
       dialogBody.replaceChildren(template.content.cloneNode(true));
       const cover = work.querySelector(".cover");
       const layout = dialogBody.querySelector(".case-layout");
-      if (cover && layout) {
+      if (cover && layout && !layout.querySelector(".case-shots")) {
         const clone = cover.cloneNode(true);
         clone.classList.add("in-dialog");
         layout.prepend(clone);
