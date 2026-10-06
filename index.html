@@ -450,6 +450,30 @@
       overflow: hidden;
       padding: 28px 16px;
     }
+    .cover.has-shot { padding: 0; background: #111; }
+    .cover.has-shot .shot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .shot-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .shot-row img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #111;
+    }
     .index {
       position: absolute;
       z-index: 2;
@@ -989,7 +1013,7 @@
         <div class="proof">
           <article><a href="#pando"><strong>10,000+</strong><span>Monthly active users</span><em>Pando Electric</em></a></article>
           <article><a href="#healthacademia"><strong>8,000</strong><span>Downloads in a quarter</span><em>Healthacademia</em></a></article>
-          <article><a href="#freelance"><strong>4.6★</strong><span>From 300+ launch reviews</span><em>Freelance marketplace</em></a></article>
+          <article><a href="#freelance"><strong>4.6★</strong><span>From 300+ launch reviews</span><em>Staftr</em></a></article>
           <article><a href="#semieta"><strong>30%</strong><span>Fewer double-bookings</span><em>Semieta Site Access</em></a></article>
         </div>
       </div>
@@ -1019,19 +1043,8 @@
 
         <div class="work-grid is-featured">
           <article class="work" id="pando" data-tags="react-native iot">
-            <div class="cover c-pando">
-              <span class="index">01</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-pando">
-                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
-                  <div class="s-kicker">Pando</div>
-                  <div class="s-title">Charging</div>
-                  <div class="ring"><div><b>42.8</b><span>kWh</span></div></div>
-                  <div class="s-card"><div class="s-row"><span>Station A4</span><b class="hi">Active</b></div></div>
-                  <div class="s-card"><div class="s-row"><span>Bluetooth</span><b>Connected</b></div></div>
-                  <div class="s-bar"><span style="width:72%"></span></div>
-                </div>
-              </div>
+            <div class="cover c-pando has-shot">
+              <img class="shot" src="images/pando-charging.webp" alt="Pando Electric charging session">
             </div>
             <div class="work-body">
               <p class="eyebrow">EV charging · React Native</p>
@@ -1060,6 +1073,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Bluetooth</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="shot-row">
+                  <img src="images/pando-devices.webp" alt="Pando Electric device list">
+                  <img src="images/pando-charging.webp" alt="Pando Electric live charge">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/pando-electric/id6741189483" target="_blank" rel="noopener noreferrer">App Store</a>
                   <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2" target="_blank" rel="noopener noreferrer">Play Store</a>
@@ -1069,20 +1086,8 @@
           </article>
 
           <article class="work" id="healthacademia" data-tags="react-native">
-            <div class="cover c-health">
-              <span class="index">02</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-health">
-                  <div class="s-top"><span>9:41</span><span>00:12:20</span></div>
-                  <div class="s-kicker">Healthacademia</div>
-                  <div class="s-title">Question 18</div>
-                  <div class="s-sub">of 40 · Block 3</div>
-                  <div class="s-card opt">Adaptive pacing</div>
-                  <div class="s-card opt on">Timed simulation</div>
-                  <div class="s-card opt">Review later</div>
-                  <div class="s-bar"><span style="width:45%"></span></div>
-                </div>
-              </div>
+            <div class="cover c-health has-shot">
+              <img class="shot" src="images/exam-challenges.webp" alt="Healthacademia challenge and mock exam screen">
             </div>
             <div class="work-body">
               <p class="eyebrow">Medical exams · React Native</p>
@@ -1111,6 +1116,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Git</li></ul>
+                <div class="shot-row">
+                  <img src="images/exam-challenges.webp" alt="Mock exam challenge progress">
+                  <img src="images/exam-review.webp" alt="Question review for incorrect, bookmarked, and doubted items">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/healthcademia-app/id6608980560" target="_blank" rel="noopener noreferrer">App Store</a>
                   <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.healthcademia.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
@@ -1120,17 +1129,8 @@
           </article>
 
           <article class="work" id="semieta" data-tags="swift">
-            <div class="cover c-semieta">
-              <span class="index">03</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-semieta">
-                  <div class="s-top"><span>9:41</span><span class="hi">PK</span></div>
-                  <div class="s-kicker">Semieta</div>
-                  <div class="s-title">Site access</div>
-                  <div class="cal" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="s-card"><div class="s-row"><span>Lab 2 · 14:00</span><b class="hi">Booked</b></div></div>
-                </div>
-              </div>
+            <div class="cover c-semieta has-shot">
+              <img class="shot" src="images/semieta-role.webp" alt="Semieta visitor and contractor check-in">
             </div>
             <div class="work-body">
               <p class="eyebrow">Facility access · SwiftUI</p>
@@ -1158,6 +1158,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>Swift</li><li>SwiftUI</li><li>MVC</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="shot-row">
+                  <img src="images/semieta-role.webp" alt="Visitor or contractor site check-in">
+                  <img src="images/semieta-aldi.webp" alt="Aldi site sign-in screen">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/semieta-site-access/id6760181040" target="_blank" rel="noopener noreferrer">App Store</a>
                 </div>
@@ -1166,21 +1170,11 @@
           </article>
 
           <article class="work" id="university" data-tags="react-native">
-            <div class="cover c-uni">
-              <span class="index">04</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-uni">
-                  <div class="s-top"><span>9:41</span><span>3 due</span></div>
-                  <div class="s-kicker">10Pearls</div>
-                  <div class="s-title">Courses</div>
-                  <div class="s-card"><div class="s-row"><b>Flutter</b><span class="hi">72%</span></div><div class="s-bar"><span style="width:72%"></span></div></div>
-                  <div class="s-card"><div class="s-row"><b>Cloud</b><span class="hi">41%</span></div><div class="s-bar"><span style="width:41%"></span></div></div>
-                  <div class="s-card"><div class="s-row"><b>Quiz</b><span class="hi">Ready</span></div></div>
-                </div>
-              </div>
+            <div class="cover c-uni has-shot">
+              <img class="shot" src="images/10pu-home.webp" alt="10Pearls University course home">
             </div>
             <div class="work-body">
-              <p class="eyebrow">Learning · React Native</p>
+              <p class="eyebrow">10PU · React Native</p>
               <h3>10Pearls University</h3>
               <p class="blurb">Enterprise learning app for tech and non-tech courses, bootcamps, quizzes, and assessments.</p>
               <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Firebase</li></ul>
@@ -1192,7 +1186,7 @@
             </div>
             <template>
               <div class="case-layout"><div class="case-copy">
-                <p class="eyebrow">Learning · React Native</p>
+                <p class="eyebrow">10PU · React Native</p>
                 <h2>10Pearls University</h2>
                 <p class="case-lead">Enterprise mobile learning with courses, bootcamps, quizzes, and assessments.</p>
                 <ul class="case-points">
@@ -1202,6 +1196,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="shot-row">
+                  <img src="images/10pu-home.webp" alt="10PU latest and top courses">
+                  <img src="images/10pu-course.webp" alt="10PU course description">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/10pearls-university/id6447512915" target="_blank" rel="noopener noreferrer">App Store</a>
                   <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.tenpearls.university" target="_blank" rel="noopener noreferrer">Play Store</a>
@@ -1211,19 +1209,8 @@
           </article>
 
           <article class="work" id="jeenie" data-tags="flutter">
-            <div class="cover c-jeenie">
-              <span class="index">05</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-jeenie">
-                  <div class="s-top"><span>9:41</span><span class="hi">LIVE</span></div>
-                  <div class="s-kicker">Jeenie</div>
-                  <div class="s-title">Interpret</div>
-                  <div class="avatars"><span></span><span></span></div>
-                  <div class="bubble">Interpreter connected</div>
-                  <div class="bubble me">Video is on</div>
-                  <div class="s-card"><div class="s-row"><span>Call</span><b class="hi">00:12</b></div></div>
-                </div>
-              </div>
+            <div class="cover c-jeenie has-shot">
+              <img class="shot" src="images/jeenie-call.webp" alt="Jeenie live interpreting call">
             </div>
             <div class="work-body">
               <p class="eyebrow">Live interpreting · Flutter</p>
@@ -1248,6 +1235,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>Flutter</li><li>Dart</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Riverpod</li><li>Bloc</li><li>Provider</li><li>Crash reporting</li><li>Analytics</li></ul>
+                <div class="shot-row">
+                  <img src="images/jeenie-call.webp" alt="Jeenie interpreter on a video call">
+                  <img src="images/jeenie-welcome.webp" alt="Jeenie welcome screen to request an interpreter">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432" target="_blank" rel="noopener noreferrer">App Store</a>
                   <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.newsolo" target="_blank" rel="noopener noreferrer">Play Store</a>
@@ -1257,37 +1248,28 @@
           </article>
 
           <article class="work" id="freelance" data-tags="react-native">
-            <div class="cover c-free">
-              <span class="index">06</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-free">
-                  <div class="s-top"><span>9:41</span><span class="hi">4.6</span></div>
-                  <div class="s-kicker">Marketplace</div>
-                  <div class="s-title">Open briefs</div>
-                  <div class="s-card"><b>Mobile redesign</b><div class="s-sub">Fixed scope · Remote</div></div>
-                  <div class="s-card"><b>API integration</b><div class="s-sub">2 proposals</div></div>
-                </div>
-              </div>
+            <div class="cover c-free has-shot">
+              <img class="shot" src="images/staftr-job.webp" alt="Staftr job details">
             </div>
             <div class="work-body">
-              <p class="eyebrow">Marketplace · React Native</p>
-              <h3>Freelance Marketplace</h3>
-              <p class="blurb">A marketplace connecting clients and contractors, taken from concept to both stores in four months.</p>
+              <p class="eyebrow">Staftr · React Native</p>
+              <h3>Staftr</h3>
+              <p class="blurb">Freelance marketplace for assignments, time tracking, and invoices. Taken from concept to both stores in four months.</p>
               <ul class="metrics">
                 <li><strong>4.6★</strong><span>within six weeks</span></li>
                 <li><strong>300+</strong><span>launch reviews</span></li>
               </ul>
               <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Redux</li></ul>
               <div class="work-actions">
-                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Freelance Marketplace</span></button>
+                <button class="btn-details" type="button" data-open>View project<span class="sr-only">: Staftr</span></button>
                 <span class="note-pill">Shipped to both stores</span>
               </div>
             </div>
             <template>
               <div class="case-layout"><div class="case-copy">
-                <p class="eyebrow">Marketplace · React Native</p>
-                <h2>Freelance Marketplace</h2>
-                <p class="case-lead">A project marketplace connecting clients with contractors for service delivery.</p>
+                <p class="eyebrow">Staftr · React Native</p>
+                <h2>Staftr</h2>
+                <p class="case-lead">Freelance marketplace for assignments, time tracking, candidate approvals, and invoices.</p>
                 <ul class="case-points">
                   <li>From concept to an App Store and Play Store release in four months.</li>
                   <li>4.6-star rating from more than 300 reviews within six weeks of launch.</li>
@@ -1295,25 +1277,19 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>React Native</li><li>TypeScript</li><li>Redux</li><li>REST</li></ul>
+                <div class="shot-row">
+                  <img src="images/staftr-job.webp" alt="Staftr job details">
+                  <img src="images/staftr-time.webp" alt="Staftr time tracking and invoices">
+                  <img src="images/staftr-role.webp" alt="Staftr active role and timekeeping">
+                </div>
                 <p class="case-note">Shipped to both stores. Public listing links are not included here.</p>
               </div></div>
             </template>
           </article>
 
           <article class="work" id="aims" data-tags="react-native">
-            <div class="cover c-aims">
-              <span class="index">07</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-aims">
-                  <div class="s-top"><span>9:41</span><span>AIMS+</span></div>
-                  <div class="s-kicker">Assessment</div>
-                  <div class="s-title">Session</div>
-                  <div class="s-sub">Custom evaluation</div>
-                  <div class="s-card"><div class="s-row"><span>Diagnostics</span><b class="hi">Live</b></div></div>
-                  <div class="s-card"><div class="s-row"><span>Sections</span><b>6 / 8</b></div></div>
-                  <div class="s-bar"><span style="width:75%"></span></div>
-                </div>
-              </div>
+            <div class="cover c-aims has-shot">
+              <img class="shot" src="images/exam-results.webp" alt="AIMS+ mock exam percentile results">
             </div>
             <div class="work-body">
               <p class="eyebrow">Assessments · React Native</p>
@@ -1338,6 +1314,10 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>React Native</li><li>TypeScript</li><li>JavaScript</li><li>Firebase</li><li>MVVM</li><li>REST APIs</li><li>Push notifications</li><li>Redux</li><li>Context</li><li>Zustand</li></ul>
+                <div class="shot-row">
+                  <img src="images/exam-results.webp" alt="AIMS+ percentile and official result">
+                  <img src="images/exam-review.webp" alt="AIMS+ question review">
+                </div>
                 <div class="case-links">
                   <a class="btn-solid" href="https://apps.apple.com/pk/app/aims/id6746238532" target="_blank" rel="noopener noreferrer">App Store</a>
                   <a class="btn-solid" href="https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp" target="_blank" rel="noopener noreferrer">Play Store</a>
@@ -1347,17 +1327,8 @@
           </article>
 
           <article class="work" id="photo" data-tags="swift ai">
-            <div class="cover c-photo">
-              <span class="index">08</span>
-              <div class="phone" aria-hidden="true"><span class="notch"></span>
-                <div class="screen s-photo">
-                  <div class="s-top"><span>9:41</span><span class="hi">AI</span></div>
-                  <div class="s-kicker">Edit</div>
-                  <div class="s-title">Portrait</div>
-                  <div class="photo-stage"></div>
-                  <div class="chips"><span>Clean</span><span class="on">Tone</span><span>Soft</span></div>
-                </div>
-              </div>
+            <div class="cover c-photo has-shot">
+              <img class="shot" src="images/photo-impression.webp" alt="AI photo editor Impression look">
             </div>
             <div class="work-body">
               <p class="eyebrow">Photo · SwiftUI</p>
@@ -1381,6 +1352,11 @@
                 </ul>
                 <p class="stack-label">Stack</p>
                 <ul class="tech"><li>SwiftUI</li><li>Core Image</li><li>AI engine APIs</li><li>Swift concurrency</li></ul>
+                <div class="shot-row">
+                  <img src="images/photo-impression.webp" alt="Impression portrait edit">
+                  <img src="images/photo-smile.webp" alt="Smile edit">
+                  <img src="images/photo-lips.webp" alt="Lips edit">
+                </div>
                 <p class="case-note">Shipped to both stores. Public listing links are not included here.</p>
               </div></div>
             </template>
