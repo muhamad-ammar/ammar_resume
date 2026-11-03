@@ -1,0 +1,287 @@
+% Resume in Latex
+% Author : Muhammad Ammar
+% Based off of: https://muhamad-ammar.github.io/ammar_resume/
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{hyperref} 
+% only for pdflatex
+% \input{glyphtounicode}
+
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{rgb}{0.08,0.08,0.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underilne
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+
+% custom font: helvetica-style
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% sans serif sections
+\titleformat {\section}{
+    \bfseries \vspace{2pt} \raggedright \large % header section
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\ % top row of resume entry
+      \textit{#3} & {\color{dark-grey} \small #4}\\ % second row of resume entry
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-77pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% CHANGED default leftmargin  0.15 in
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+
+\color{text-grey}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Muhammad Ammar} \\ \vspace{5pt}
+    \small \faPhone* \href{tel://+923226258404}{(+92) 322 625 8404} \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt}  \href{mailto://ammarmuhammad992@gmail.com}{ammarmuhammad992@gmail.com} \hspace{1pt} $|$ 
+    \hspace{1pt} \faIcon{linkedin} \hspace{2pt} \href{https://www.linkedin.com/in/mammar2826/}{mammar2826} \hspace{1pt} $|$
+    \hspace{1pt} \faMapMarker* \hspace{2pt}\texttt{Lahore, Pakistan}
+    \\ \vspace{-3pt}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{SUMMARY}
+Highly skilled Staff Mobile Engineer with 5+ years of experience specializing in cross-platform mobile development and Flutter. Proven ability to lead the creation of AI-powered mobile applications, optimize rendering performance, and implement robust architectures like Clean Architecture and MVVM. Successfully enhanced feature onboarding times by 40\% and reduced cross-module merge conflicts by 55\%. Adept at integrating scalable cloud services, improving application stability, and driving engineering excellence through technical mentorship.
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \vspace{-1pt}\item
+      \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{AlhadiTech (Pvt.) Ltd} & {\color{dark-grey}\small Remote}\vspace{1pt}\\
+        \textit{Staff Mobile Engineer} & {\color{dark-grey}\small Oct. 2026 -- Current}\\
+        \textit{Senior Flutter Developer} & {\color{dark-grey}\small Jul. 2026 -- Oct. 2026}\\
+      \end{tabular*}\vspace{-4pt}
+      \resumeItemListStart
+        \resumeItem{Joined as Senior Flutter Developer on 16 Jul 2026, completed the probationary period on 16 Oct 2026, and continued in the same role as Staff Mobile Engineer from 18 Oct 2026.}
+        \resumeItem{Led development of a cross-platform medical appointments application (patient and doctor portals) using Flutter and Material 3, architecting the app around an MVVM pattern with Riverpod for state management to ensure scalable, testable code across features like bookings, appointment details, and authentication.}
+        \resumeItem{Designed and implemented role-based UI flows (patient vs. doctor) sharing a unified codebase and routing layer (GoRoute), reducing duplication while delivering tailored booking, appointment-detail, and payment-summary experiences for each user type.}
+        \resumeItem{Collaborated closely with backend engineers to define and refine REST API contracts (JWT-based auth, appointment scheduling, medical records, payments), translating Figma designs into pixel-accurate, production-ready Flutter widgets.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{June 2025 -- May 2026}
+      {Senior Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Spearheaded Flutter development for two AI-powered products (AI Assessment Kiosk and AI Photo Editing Suite), successfully launching both on the App Store and Play Store within stipulated deadlines.}
+        \resumeItem{Instituted Clean Architecture with MVVM across a 6-engineer codebase, which accelerated new feature onboarding by 40\% and decreased cross-module merge conflicts by 55\%.}
+        \resumeItem{Diagnosed three rendering performance bottlenecks using DevTools and Performance Overlay, subsequently optimizing state management and native channel calls, thereby reducing UI jank from 18 dropped frames per second to under 2 in release builds.}
+        \resumeItem{Integrated Firebase Authentication, Cloud Messaging (FCM), and Crashlytics, achieving a 99.5\% push notification delivery rate and eliminating undetected crash incidents for two consecutive quarters.}
+        \resumeItem{Facilitated bi-weekly code reviews for four engineers, elevating unit and widget test coverage from 42\% to 75\% and reducing the average pull request review cycle from four days to two.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{June 2023 -- June 2025}
+      {Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Developed a Smart EV Charging Network application in Flutter, incorporating Bluetooth device control and real-time session telemetry, which achieved over 10,000 monthly active users across three countries within six months of its release.}
+        \resumeItem{Engineered real-time messaging and video conferencing capabilities for an Enterprise Communication Platform using Flutter, maintaining over 500 concurrent users with average call-setup latency below 200 milliseconds.}
+        \resumeItem{Delivered a timezone-aware Enterprise Resource Booking System for 200+ staff across five offices, featuring multi-timezone conflict detection that reduced double-booking incidents by 30\%.}
+        \resumeItem{Rectified 12 state-management regressions attributed to race conditions in asynchronous API calls by implementing structured Riverpod and Bloc middleware fixes, consequently decreasing the Application Not Responding (ANR) rate by 35\% over two sprints.}
+        \resumeItem{Enhanced unit, widget, and API test coverage from 30\% to 68\%, which enabled a GitHub Actions CI gate that successfully blocked 95\% of regressions before they entered the quality assurance queue.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{June 2022 -- June 2023}
+      {Associate Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Constructed a Medical Exam Prep Flutter application featuring over 500 question sets, adaptive difficulty, and a timed simulation mode; the app attained 8,000 downloads and a 4.4-star rating in the first quarter post-launch.}
+        \resumeItem{Re-architected an E-Learning quiz engine, transitioning from synchronous callbacks to asynchronous streams and data loading, which halved quiz-screen load times and improved 30-day user retention by 20\%.}
+        \resumeItem{Specified and integrated more than 15 REST endpoints in collaboration with 3 backend engineers, utilizing versioned API contracts to maintain zero breaking-change incidents across 4 staged rollouts.}
+        \resumeItem{Developed a Freelance Marketplace Flutter application from conception to App Store and Play Store release within four months, achieving a 4.6-star rating from over 300 reviews within six weeks of its launch.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Wishsol Pvt Ltd}{Apr. 2021 -- May 2022}
+      {Junior Software Engineer}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Built 3 Flutter client applications that integrated REST APIs with backend systems, delivering 8 feature releases over 13 months while concurrently completing a full-time Computer Science degree at NUST.}
+        \resumeItem{Contributed to a Clean Architecture refactoring initiative under senior supervision, successfully reducing redundant widget and component code by 25\% across 2 production applications.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Techylem Solutions Pvt Ltd}{May 2021 -- Sept. 2021}
+      {Web Developer Intern}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Maintained Flutter-based mobile applications for both Android and iOS, triaging over 15 defects and enhancing stability across 2 release cycles.}
+        \resumeItem{Assessed and resolved performance issues in production builds, resulting in a 20\% reduction in average screen render time.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National University of Sciences and Technology (NUST)}{Aug. 2018 -- May 2022}
+      {Bachelor of Science in Computer Science}{Islamabad, Pakistan}
+  \resumeSubHeadingListEnd
+
+
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+        {\textbf{10Pearls University} $|$ \emph{Flutter, Dart, Firebase, Riverpod/Bloc, REST APIs}}{}
+        \resumeItemListStart
+          \resumeItem{Engineered and deployed a scalable enterprise mobile learning platform with multi-state management structures.}
+          \resumeItem{Integrated reliable crash reporting pipelines, analytics trackers, and robust background push notifications.}
+          \resumeItem{Links: \href{https://play.google.com/store/apps/details?id=com.tenpearls.university}{\myuline {Play Store}} $|$ \href{https://apps.apple.com/pk/app/10pearls-university/id6447512915}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Pando Electric Gen 2.0} $|$ \emph{Flutter, Dart, MVVM, Telemetry State Management}}{}
+        \resumeItemListStart
+          \resumeItem{Architected an IoT energy tracking and data visualization dashboard using robust Clean Architecture patterns.}
+          \resumeItem{Implemented asynchronous API syncing with fallback mechanisms to ensure high telemetry data accuracy.}
+          \resumeItem{Links: \href{https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2}{\myuline {Play Store}} $|$ \href{https://apps.apple.com/pk/app/pando-electric/id6741189483}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Healthacademia} $|$ \emph{Flutter, Dart, Firebase Auth, REST API Integration}}{}
+        \resumeItemListStart
+          \resumeItem{Developed a performant educational mobile engine following an optimized structured MVVM repository layout.}
+          \resumeItem{Streamlined user onboarding paths and notification delivery behaviors via native Firebase cloud modules.}
+          \resumeItem{Links: \href{https://play.google.com/store/apps/details?id=com.healthcademia.amirapp}{\myuline {Play Store}} $|$ \href{https://apps.apple.com/pk/app/healthcademia-app/id6608980560}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Jeenie} $|$ \emph{Flutter, Dart, Riverpod/Bloc, Real-Time Streams, Telemetry Analytics}}{}
+        \resumeItemListStart
+          \resumeItem{Built a 24/7 cross-platform live interpreting network managing interactive stream states cleanly via robust state tools.}
+          \resumeItem{Minimized call-setup network lags while adding Firebase diagnostic monitors to reduce application exceptions.}
+          \resumeItem{Links: \href{https://play.google.com/store/apps/details?id=com.newsolo}{\myuline {Play Store}} $|$ \href{https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Semieta Site Access} $|$ \emph{Swift, SwiftUI, iOS Native Core, MVC/MVVM Architecture}}{}
+        \resumeItemListStart
+          \resumeItem{Constructed a highly secure corporate access control system leveraging reactive Swift layouts natively.}
+          \resumeItem{Optimized low-level network transactions and integrated analytic data engines to monitor real-time security events.}
+          \resumeItem{Link: \href{https://apps.apple.com/pk/app/semieta-site-access/id6760181040}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{AIMS+} $|$ \emph{Flutter, Dart, Firebase Suite, Push Notification Routing}}{}
+        \resumeItemListStart
+          \resumeItem{Delivered an optimized exam configuration suite with localized data layers and unified API versioning pipelines.}
+          \resumeItem{Ensured predictable background service loops for instant question-set retrieval and profile diagnostics.}
+          \resumeItem{Links: \href{https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp}{\myuline {Play Store}} $|$ \href{https://apps.apple.com/pk/app/aims/id6746238532}{\myuline {App Store}}}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%-----------PROGRAMMING SKILLS-----------
+    \section{SKILLS}
+    \begin{itemize}[leftmargin=0in, label={}]
+        \small{\item{
+        {\bfseries Core Frameworks} {: Flutter, SwiftUI, Native Channels, Custom Painters, Isolate Compute}\vspace{2pt} \\
+        {\bfseries Languages}       {: Dart, TypeScript, JavaScript (ES6+), Swift, Python, Node.js, Django, SQL}\vspace{2pt} \\
+        {\bfseries State \& Data}   {: Riverpod, BLoC, Provider, Repository Pattern, REST APIs, WebSockets, Bluetooth BLE}\vspace{2pt} \\
+        {\bfseries Cloud \& DevOps} {: Firebase (Auth, FCM, Crashlytics, Firestore), Git, Fastlane, GitHub Actions CI/CD}\vspace{2pt} \\
+        {\bfseries Architecture}   {: Clean Architecture, MVVM, Modular Layouts, SOLID Principles, TDD, Agile/Scrum}\vspace{2pt} \\
+        {\bfseries Spoken Lang.}    {: English (Native), Urdu (Native)}
+        }}
+\end{itemize}
+%-------------------------------------------
+\end{document}
