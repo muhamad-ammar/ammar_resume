@@ -1,0 +1,279 @@
+%-------------------------
+% Resume in Latex
+% Author : Muhammad Ammar
+% Based off of: https://muhamad-ammar.github.io/ammar_resume/
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{needspace}
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underline
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+% custom font: helvetica-style
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+    \bfseries \vspace{1pt} \raggedright \large
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-6pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\
+      \textit{#3} & {\color{dark-grey} \small #4}\\
+    \end{tabular*}\vspace{-5pt}\nopagebreak
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}, itemsep=1pt, parsep=0pt, topsep=2pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=0pt, parsep=0pt, topsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+
+\color{text-grey}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Muhammad Ammar} \\ \vspace{5pt}
+    \small \faPhone* \href{tel:+923226258404}{(+92) 322 625 8404} \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} \href{mailto:ammarmuhammad992@gmail.com}{ammarmuhammad992@gmail.com} \hspace{1pt} $|$
+    \hspace{1pt} \faIcon{linkedin} \hspace{2pt} \href{https://www.linkedin.com/in/mammar2826/}{mammar2826} \hspace{1pt} $|$
+    \hspace{1pt} \faMapMarker* \hspace{2pt}\texttt{Lahore, Pakistan}
+    \\ \vspace{-3pt}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{SUMMARY}
+Staff Mobile Engineer with 5+ years shipping cross-platform products in Flutter and React Native. At 10Pearls, led two AI app launches, put Clean Architecture and MVVM in place for a 6-engineer codebase (40\% faster feature onboarding, 55\% fewer cross-module merge conflicts), and cut release-build UI jank from 18 dropped frames per second to under 2. Ships with Firebase, CI gates, and App Store and Play Store releases.
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AlhadiTech}{18 Oct. 2026 -- Present}
+      {Staff Mobile Engineer}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Promoted from Senior Flutter Developer after completing probation, effective 18 October 2026. Other terms of employment unchanged.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AlhadiTech}{16 July 2026 -- 16 Oct. 2026}
+      {Senior Flutter Developer}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Joined as Senior Flutter Developer and completed the probationary period on 16 October 2026.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{July 2025 -- May 2026}
+      {Senior Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Spearheaded React Native development for two AI-powered products (AI Assessment Kiosk and AI Photo Editing Suite), launching both on the App Store and Play Store within the agreed deadlines.}
+        \resumeItem{Instituted Clean Architecture with MVVM across a 6-engineer codebase, which accelerated new feature onboarding by 40\% and decreased cross-module merge conflicts by 55\%.}
+        \resumeItem{Diagnosed three rendering bottlenecks with Flipper and React DevTools, then optimized state management and bridge calls, reducing UI jank from 18 dropped frames per second to under 2 in release builds.}
+        \resumeItem{Integrated Firebase Authentication, Cloud Messaging (FCM), and Crashlytics, achieving a 99.5\% push notification delivery rate and eliminating undetected crash incidents for two consecutive quarters.}
+        \resumeItem{Ran bi-weekly code reviews for four engineers, raising unit and UI test coverage from 42\% to 75\% and cutting the average pull request review cycle from four days to two.}
+        \resumeItem{\textbf{Projects:} Semieta Site Access, AIMS+}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{June 2023 -- June 2025}
+      {Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Developed a smart EV charging network in React Native, with Bluetooth device control and real-time session telemetry, reaching over 10,000 monthly active users across three countries within six months of release.}
+        \resumeItem{Engineered real-time messaging and video for an enterprise communication platform in React Native, holding over 500 concurrent users with average call-setup latency below 200 milliseconds.}
+        \resumeItem{Delivered a timezone-aware enterprise resource booking system for 200+ staff across five offices. Multi-timezone conflict detection reduced double-booking incidents by 30\%.}
+        \resumeItem{Fixed 12 state-management regressions caused by race conditions in asynchronous API calls, using structured Redux middleware, and decreased the ANR rate by 35\% over two sprints.}
+        \resumeItem{Raised unit, UI, and API test coverage from 30\% to 68\%, which enabled a GitHub Actions CI gate that blocked 95\% of regressions before they reached QA.}
+        \resumeItem{\textbf{Projects:} Healthacademia, Mplace, Staftr, Pando Electric}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {10Pearls (Pvt.) Ltd}{June 2022 -- June 2023}
+      {Associate Software Consultant}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Built a medical exam prep app in React Native with 500+ question sets, adaptive difficulty, and a timed simulation mode. It reached 8,000 downloads and a 4.4-star rating in the first quarter after launch.}
+        \resumeItem{Re-architected an e-learning quiz engine, moving from synchronous callbacks to asynchronous loading, which halved quiz-screen load times and improved 30-day retention by 20\%.}
+        \resumeItem{Specified and integrated more than 15 REST endpoints with 3 backend engineers, using versioned API contracts and keeping zero breaking changes across 4 staged rollouts.}
+        \resumeItem{Took a freelance marketplace in React Native from concept to App Store and Play Store release in four months. It reached a 4.6-star rating from 300+ reviews within six weeks of launch.}
+        \resumeItem{\textbf{Projects:} 10Pearls University, Jeenie}
+      \resumeItemListEnd
+
+    \needspace{8\baselineskip}
+    \resumeSubheading
+      {Wishsol Pvt Ltd}{Apr. 2021 -- May 2022}
+      {Junior Software Engineer}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Built 3 React Native clients that integrated REST APIs with backend systems, shipping 8 feature releases over 13 months while completing a full-time Computer Science degree at NUST.}
+        \resumeItem{Contributed to a Clean Architecture refactor under senior supervision, reducing redundant component code by 25\% across 2 production applications.}
+      \resumeItemListEnd
+
+    \needspace{6\baselineskip}
+    \resumeSubheading
+      {Techylem Solutions Pvt Ltd}{May 2021 -- Sept. 2021}
+      {Web Developer Intern}{Lahore, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Maintained Flutter apps for Android and iOS, triaging 15+ defects and improving stability across 2 release cycles.}
+        \resumeItem{Resolved performance issues in production builds, cutting average screen render time by 20\%.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National University of Sciences and Technology (NUST)}{Aug. 2018 -- May 2022}
+      {Bachelor of Science in Computer Science}{Islamabad, Pakistan}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+        {\textbf{10Pearls University} $|$ \emph{React Native, TypeScript, Firebase, Redux/Zustand}}{}
+        \resumeItemListStart
+          \resumeItem{Enterprise learning app with shared state, crash reporting, analytics, and push notifications. \href{https://play.google.com/store/apps/details?id=com.tenpearls.university}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/10pearls-university/id6447512915}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Pando Electric Gen 2.0} $|$ \emph{React Native, TypeScript, MVVM, Amplitude, Sentry}}{}
+        \resumeItemListStart
+          \resumeItem{IoT energy dashboard on Clean Architecture, with polling fallbacks for telemetry. \href{https://play.google.com/store/apps/details?id=com.pando.electric.app.gen2}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/pando-electric/id6741189483}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Healthacademia} $|$ \emph{React Native, TypeScript, Firebase, Sentry}}{}
+        \resumeItemListStart
+          \resumeItem{Exam-prep client with Firebase onboarding and API feature flags. \href{https://play.google.com/store/apps/details?id=com.healthcademia.amirapp}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/healthcademia-app/id6608980560}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Mplace} $|$ \emph{React Native, TypeScript, Redux, RTK Query}}{}
+        \resumeItemListStart
+          \resumeItem{Legal-review staffing app with time tracking. Reduced dropped frames through profiling and integration tests. \href{https://play.google.com/store/apps/details?id=io.mplace}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/mplace-legal-review-staffing/id1031890542}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Staftr} $|$ \emph{React Native, TypeScript, app flavors, Bitrise}}{}
+        \resumeItemListStart
+          \resumeItem{PwC staffing app. Rebuilt the Mplace UI to PwC guidelines and upgraded React Native from 0.72 to 0.81 for Android 16 KB pages. \href{https://play.google.com/store/apps/details?id=io.mplace}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/mplace-legal-review-staffing/id1031890542}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Jeenie} $|$ \emph{Flutter, Dart, Riverpod/BLoC}}{}
+        \resumeItemListStart
+          \resumeItem{24/7 live interpreting client. Call state in Riverpod and BLoC, with Firebase diagnostics. \href{https://play.google.com/store/apps/details?id=com.newsolo}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/jeenie-24-7-live-interpreting/id1341871432}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Semieta Site Access} $|$ \emph{Swift, SwiftUI, MVVM}}{}
+        \resumeItemListStart
+          \resumeItem{Corporate site-access app with native layouts and security-event analytics. \href{https://apps.apple.com/pk/app/semieta-site-access/id6760181040}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{AIMS+} $|$ \emph{React Native, Firebase, push notifications}}{}
+        \resumeItemListStart
+          \resumeItem{Exam configuration suite with localized data, versioned APIs, and background sync. \href{https://play.google.com/store/apps/details?id=com.healthcademiaitaly.amirapp}{\myuline{Play Store}} $|$ \href{https://apps.apple.com/pk/app/aims/id6746238532}{\myuline{App Store}}}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     {\bfseries Core frameworks} {: React Native, Flutter, SwiftUI, native modules, TurboModules, JSI}\vspace{2pt} \\
+     {\bfseries Languages} {: TypeScript, JavaScript (ES6+), Swift, Dart, Python, Node.js, Django, SQL}\vspace{2pt} \\
+     {\bfseries State \& data} {: Redux, Context API, Zustand, Riverpod, BLoC, REST APIs, WebSockets, Bluetooth LE}\vspace{2pt} \\
+     {\bfseries Cloud \& DevOps} {: Firebase (Auth, FCM, Crashlytics, Firestore), Git, Fastlane, GitHub Actions}\vspace{2pt} \\
+     {\bfseries Architecture} {: Clean Architecture, MVVM, modular layouts, SOLID, TDD, Agile/Scrum}\vspace{2pt} \\
+     {\bfseries Spoken languages} {: English (Native), Urdu (Native)}
+    }}
+ \end{itemize}
+
+\end{document}
